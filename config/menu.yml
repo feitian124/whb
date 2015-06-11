@@ -1,0 +1,28 @@
+button:
+  -
+    name: "开始制作"
+    sub_button:
+      -
+        type: "pic_weixin"
+        name: "上传图片"
+        key: 'SEND_PIC'
+      -
+        type: "click"
+        name: "完成制作"
+        key: "COMPLETE_CREATE"
+        url: ""
+  -
+    type: "click"
+    name: "我的海报"
+    key: "MY_HAIBAO"
+  -
+    name: "更多"
+    sub_button:
+      -
+        type: "view"
+        name: "新手上路"
+        url: 'http://1.weihaibao8.sinaapp.com/newComer.php'
+      -
+        type: "view"
+        name: "更多精彩"
+        url: "http://1.weihaibao8.sinaapp.com/moreShow.php"
