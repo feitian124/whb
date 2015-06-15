@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.feature "Wechats", type: :feature do
+feature "Wechats" do
   pending "add some scenarios (or delete) #{__FILE__}"
 end
