@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
+
 <%= render 'form' %>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+<div class="row">
+  <div class="small-12 columns">
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+  </div>
+</div>
