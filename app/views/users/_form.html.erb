@@ -11,7 +11,109 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="small-12 columns">
+      <label>does user subscribed?</label>
+        <%= f.check_box :subscribe %>
+        <%= label_tag(:user_subscribe, "Yes") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <label>openid
+        <%= f.text_field :openid %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <label>nickname
+        <%= f.text_field :nickname %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+        <label>choose your sex </label>
+        <%= f.radio_button :sex, "1" %>
+        <%= label_tag(:user_sex_1, "male") %>
+        <%= f.radio_button :sex, "2" %>
+        <%= label_tag(:user_sex_2, "female") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <label>language
+        <%= f.text_field :language %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <label>city
+        <%= f.text_field :city %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <label>province
+        <%= f.text_field :province %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <label>country
+        <%= f.text_field :country %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <label>headimgurl
+        <%= f.text_field :headimgurl %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <label>subscribe_time
+        <%= f.text_field :subscribe_time %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <label>unionid
+        <%= f.text_field :unionid %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <label>remark
+        <%= f.text_field :remark %>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    </div>
   </div>
 <% end %>
