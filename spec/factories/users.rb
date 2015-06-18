@@ -9,7 +9,7 @@ FactoryGirl.define do
     province "province"
     country "country"
     headimgurl "headimgurl"
-    subscribe_time { Time.now }
+    sequence(:subscribe_time) { |n| n }
     sequence(:unionid) { |n| "unionid#{n}" }
     remark "remark"
     groupid 0

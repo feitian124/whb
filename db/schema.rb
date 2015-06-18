@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150617150133) do
     t.string   "province"
     t.string   "country"
     t.string   "headimgurl"
-    t.datetime "subscribe_time"
+    t.integer  "subscribe_time"
     t.string   "unionid"
     t.string   "remark"
     t.integer  "groupid",        default: 0

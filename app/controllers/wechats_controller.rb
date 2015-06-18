@@ -42,12 +42,24 @@ class WechatsController < ApplicationController
 
   # 用户关注
   on :event, with: "subscribe" do |request|
-    logger.debug "subscribe: #{request.inspect}"
+    user_json = wechat.user request[:FromUserName]
+    old = User.find_by_openid request[:FromUserName]
+    if old
+      old.update!(user_json)
+      request.reply.text "欢迎再次关注~"
+    else
+      User.create!(user_json)
+      request.reply.text "欢迎关注~"
+    end
   end
 
   # 用户取消关注
   on :event, with: "unsubscribe" do |request|
-    logger.debug "unsubscribe: #{request.inspect}"
+    user = User.find_by_openid request[:FromUserName]
+    if user
+      user.subscribe = false
+      user.save!
+    end
   end
 
   # 当无任何responder处理用户信息时,使用这个responder处理
