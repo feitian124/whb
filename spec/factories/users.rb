@@ -10,7 +10,7 @@ FactoryGirl.define do
     country "country"
     headimgurl "headimgurl"
     subscribe_time { Time.now }
-    unionid { |n| "unionid#{n}" }
+    sequence(:unionid) { |n| "unionid#{n}" }
     remark "remark"
     groupid 0
   end
