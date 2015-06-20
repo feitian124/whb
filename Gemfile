@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'foundation-rails'
 gem 'high_voltage'
 gem 'wechat-rails', git:'https://github.com/skinnyworm/wechat-rails'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'byebug'
