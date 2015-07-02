@@ -4,7 +4,8 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @user = User.find(params[:user_id])
+    @images = @user.images
   end
 
   # GET /images/1
