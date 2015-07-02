@@ -21,6 +21,14 @@ class WechatsController < ApplicationController
 
   # 处理图片信息
   on :image do |request|
+    begin
+      tmp_file = wechat.media request[:MediaId]
+      puts "tmp_file:#{tmp_file}"
+    rescue => e
+      puts "tmp_file failed--------------------------------"
+      e.response
+    end
+
     request.reply.image(request[:MediaId]) #直接将图片返回给用户
   end
 
