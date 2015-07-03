@@ -24,7 +24,8 @@ class WechatsController < ApplicationController
   on :image do |request|
     begin
       tmp_file = wechat.media request[:MediaId]
-      Image.create({
+      user = User.find_by(openid: request[:OpenId])
+      user.images.create({
         src: tmp_file.path,
         media_id: request[:MediaId],
         msg_id: request[:MsgId],
