@@ -20,16 +20,21 @@ class WechatsController < ApplicationController
   end
 
   # 处理图片信息
+  # 以后"下载文件"可能需要放到后台任务, 防止阻塞?
   on :image do |request|
     begin
       tmp_file = wechat.media request[:MediaId]
-      puts "tmp_file:#{tmp_file}"
+      Image.create({
+        src: tmp_file.path,
+        media_id: request[:MediaId],
+        msg_id: request[:MsgId],
+        pic_url: request[:PicUrl]
+      })
+      request.reply.image(request[:MediaId]) #直接将图片返回给用户
     rescue => e
-      puts "tmp_file failed--------------------------------"
       e.response
+      request.reply.text "从微信服务器拉取图片失败, 图片编号[#{request[:MediaId]}]" #Just echo
     end
-
-    request.reply.image(request[:MediaId]) #直接将图片返回给用户
   end
 
   # 处理语音信息
