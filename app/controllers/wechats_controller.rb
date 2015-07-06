@@ -26,12 +26,11 @@ class WechatsController < ApplicationController
       tmp_file = wechat.media request[:MediaId]
       user = User.find_by(openid: request[:FromUserName])
       img = user.images.create({
+        src: tmp_file,
         media_id: request[:MediaId],
         msg_id: request[:MsgId],
         pic_url: request[:PicUrl]
       })
-      FileUtils.mkdir_p(img.path) unless File.directory?(img.path)
-      FileUtils.mv(tmp_file.path, img.src)
       request.reply.image(request[:MediaId]) #直接将图片返回给用户
     rescue => e
       puts "error:#{$!}"
