@@ -4,12 +4,12 @@ class Image < ActiveRecord::Base
   before_create :set_src
 
   protected
-    # uploads/openid-group/openid/date/file
+    # uploads/group/openid/date/file
     def set_src
       if src.blank?
-        self.src = 'src'
-      else
-        true
+        group = user.openid[0..2]
+        date = created_at.strftime('%Y%m%d')
+        self.src = "uploads/#{group}/#{user.openid}/#{date}/#{media_id}"
       end
     end
 end
