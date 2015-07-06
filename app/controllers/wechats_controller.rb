@@ -25,15 +25,17 @@ class WechatsController < ApplicationController
     begin
       tmp_file = wechat.media request[:MediaId]
       user = User.find_by(openid: request[:FromUserName])
-      user.images.create({
-        src: tmp_file.path,
+      img = user.images.create({
         media_id: request[:MediaId],
         msg_id: request[:MsgId],
         pic_url: request[:PicUrl]
       })
+      FileUtils.mkdir_p(img.path) unless File.directory?(img.path)
+      FileUtils.mv(tmp_file.path, img.src)
       request.reply.image(request[:MediaId]) #直接将图片返回给用户
     rescue => e
-      e.response
+      puts "error:#{$!}"
+      puts "at:#{$@}"
       request.reply.text "从微信服务器拉取图片失败, 图片编号[#{request[:MediaId]}]" #Just echo
     end
   end
@@ -77,5 +79,8 @@ class WechatsController < ApplicationController
   end
 
   # 当无任何responder处理用户信息时,使用这个responder处理
-  on :fallback, respond: "fallback message"
+  on :fallback do |request|
+    puts "fallback"
+    request.reply.text "fallback"
+  end
 end

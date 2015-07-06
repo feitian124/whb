@@ -14,7 +14,7 @@ RSpec.describe Image, type: :model do
       group = openid[0..2]
       date = img.created_at.strftime('%Y%m%d')
       media_id = img.media_id
-      expect(img.src).to eq "uploads/#{group}/#{openid}/#{date}/#{media_id}"
+      expect(img.src).to eq "#{Rails.root}/uploads/#{group}/#{openid}/#{date}/#{media_id}"
     end
   end
 end
