@@ -8,7 +8,7 @@ RSpec.describe AlbumsController, type: :controller do
 
   describe "GET #index" do
     it "assigns all albums as @albums" do
-      get :index, {}, valid_session
+      get :index, {user_id: album.user_id}, valid_session
       expect(assigns(:albums)).to eq([album])
     end
   end
@@ -22,7 +22,7 @@ RSpec.describe AlbumsController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new album as @album" do
-      get :new, {}, valid_session
+      get :new, {user_id: album.user_id}, valid_session
       expect(assigns(:album)).to be_a_new(Album)
     end
   end
@@ -37,19 +37,20 @@ RSpec.describe AlbumsController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Album" do
+        album
         expect {
-          post :create, {:album => valid_attributes}, valid_session
+          post :create, {user_id: album.user_id, :album => valid_attributes}, valid_session
         }.to change(Album, :count).by(1)
       end
 
       it "assigns a newly created album as @album" do
-        post :create, {:album => valid_attributes}, valid_session
+        post :create, {user_id: album.user_id, :album => valid_attributes}, valid_session
         expect(assigns(:album)).to be_a(Album)
         expect(assigns(:album)).to be_persisted
       end
 
       it "redirects to the created album" do
-        post :create, {:album => valid_attributes}, valid_session
+        post :create, {user_id: album.user_id, :album => valid_attributes}, valid_session
         expect(response).to redirect_to(Album.last)
       end
     end
@@ -105,13 +106,13 @@ RSpec.describe AlbumsController, type: :controller do
     it "destroys the requested album" do
       album
       expect {
-        delete :destroy, {:id => album.to_param}, valid_session
+        delete :destroy, {user_id: album.user_id, :id => album.to_param}, valid_session
       }.to change(Album, :count).by(-1)
     end
 
     it "redirects to the albums list" do
-      delete :destroy, {:id => album.to_param}, valid_session
-      expect(response).to redirect_to(albums_url)
+      delete :destroy, {user_id: album.user_id, :id => album.to_param}, valid_session
+      expect(response).to redirect_to(user_albums_url(album.user))
     end
   end
 
