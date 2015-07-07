@@ -5,13 +5,20 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th colspan="1">id</th>
+      <th colspan="1">name</th>
+      <th colspan="1">desc</th>
+      <th colspan="3">actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @albums.each do |album| %>
       <tr>
+        <td><%= album.id %></td>
+        <td><%= album.name %></td>
+        <td><%= album.desc %></td>
+
         <td><%= link_to 'Show', album %></td>
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Album', new_album_path %>
+<%= link_to 'New Album', new_user_album_path(@user) %>
