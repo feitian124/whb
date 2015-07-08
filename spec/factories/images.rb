@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :image do
+    album
     user
     sequence(:name) { |n| "name#{n}" }
     sequence(:src) { |n| "http://localhost:3000/src#{n}" }
