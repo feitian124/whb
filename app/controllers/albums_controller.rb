@@ -1,10 +1,10 @@
 class AlbumsController < ApplicationController
+  before_action :set_user, only: [:new, :create, :index]
   before_action :set_album, only: [:show, :edit, :update, :destroy]
 
   # GET /albums
   # GET /albums.json
   def index
-    @user = User.find(params[:user_id])
     @albums = @user.albums
   end
 
@@ -25,7 +25,7 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.new(album_params)
+    @album = @user.albums.build(album_params)
 
     respond_to do |format|
       if @album.save
@@ -64,6 +64,10 @@ class AlbumsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:user_id])
+    end
+
     def set_album
       @album = Album.find(params[:id])
     end

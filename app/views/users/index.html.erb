@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
+<h1>用户列表</h1> <%= link_to '创建新用户', new_user_path %>
 
 <table>
   <thead>
@@ -37,12 +37,11 @@
         <td><%= user.unionid %></td>
         <td><%= user.remark %></td>
 
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'New', new_user_path %></td>
+        <td><%= link_to '详情', user %></td>
+        <td><%= link_to '编辑', edit_user_path(user) %></td>
+        <td><%= link_to '删除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '相册', user_albums_path(user) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-

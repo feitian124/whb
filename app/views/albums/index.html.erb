@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Albums</h1>
+<h1>相册列表</h1>
+
+<%= link_to '创建新相册', new_user_album_path(@user) %>
 
 <table>
   <thead>
@@ -19,14 +21,10 @@
         <td><%= album.name %></td>
         <td><%= album.desc %></td>
 
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '详情', album %></td>
+        <td><%= link_to '编辑', edit_album_path(album) %></td>
+        <td><%= link_to '删除', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Album', new_user_album_path(@user) %>
