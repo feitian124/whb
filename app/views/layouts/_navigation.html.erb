@@ -1,12 +1,13 @@
-<%# navigation styled for Zurb Foundation 5 %>
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name"><h1><%= link_to '主页', root_path %></h1></li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-  </ul>
-  <div class="top-bar-section">
-    <ul>
-      <%= render 'layouts/navigation_links' %>
+<div class="contain-to-grid">
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name"><h1><%= link_to '主页', root_path %></h1></li>
+      <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
     </ul>
-  </div>
-</nav>
+    <div class="top-bar-section">
+      <ul>
+        <%= render 'layouts/navigation_links' %>
+      </ul>
+    </div>
+  </nav>
+</div>
