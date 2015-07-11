@@ -12,6 +12,7 @@ gem 'foundation-rails'
 gem 'high_voltage'
 gem 'wechat-rails', git:'https://github.com/skinnyworm/wechat-rails'
 gem 'carrierwave'
+gem 'bower-rails', '~> 0.10.0'
 
 group :development, :test do
   gem 'byebug'
