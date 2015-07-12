@@ -1,3 +1,30 @@
-// Place all the styles related to the albums controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$height: 80px;
+.album {
+  &.menus {
+    z-index: 1;
+    position: fixed;
+    left: 0px;
+    bottom: 3%;
+    width: 100%;
+    .menu {
+      width: 25%;
+      height: $height;
+      float: left;
+      position: relative;
+      .btn {
+        display: inline-block;
+        width: $height;
+        height: $height;
+        line-height: $height;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        font-size: 25px;
+        color: #fff;
+        position: absolute;
+        left: 50%;
+        margin-left: -50px;
+      }
+    }
+  }
+}
