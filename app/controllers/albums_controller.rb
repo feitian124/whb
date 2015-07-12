@@ -11,6 +11,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.json
   def show
+    render layout: "album"
   end
 
   # GET /albums/new
