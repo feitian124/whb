@@ -1,8 +1,8 @@
 <div id="fullpage" class="text-center">
-  <div class="section"><img src="http://placehold.it/640X1008/888888/000000"></div>
-  <div class="section"><img src="http://placehold.it/640X1008/cccccc/000000"></div>
-  <div class="section"><img src="http://placehold.it/640X1008/888888/000000"></div>
-  <div class="section"><img src="http://placehold.it/640X1008/cccccc/000000"></div>
+  <% @album.images.each do |image| %>
+    <% src =  image.src.blank? ? image.pic_url : image.src %>
+    <div class="section"><img src="<%= src %>"></div>
+  <% end %>
 </div>
 
 <div class="album arrow-wrapper animated fadeOutUp">
