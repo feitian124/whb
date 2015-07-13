@@ -1,7 +1,9 @@
 $height: 80px;
+$menus-z-index: 10;
+
 .album {
   &.menus {
-    z-index: 1;
+    z-index: $menus-z-index;
     position: fixed;
     left: 0px;
     bottom: 3%;
@@ -27,4 +29,31 @@ $height: 80px;
       }
     }
   }
+  &.arrow-wrapper {
+    z-index: $menus-z-index - 1;
+    position: fixed;
+    bottom: 4%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    margin-left: -39px;
+    .arrow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -14px 0 0 -25px;
+      width: 50px;
+      height: 28px;
+      // arrow sprite
+      background-image: image-url("sprites.png")!important;
+      background-position: 0 -82px;
+      background-repeat: no-repeat!important;
+    }
+  }
+}
+
+#arrow-wrapper {
+  -webkit-animation-duration: 2.5s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-iteration-count: infinite;
 }

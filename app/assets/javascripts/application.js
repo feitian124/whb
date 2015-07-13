@@ -22,4 +22,6 @@ $(function() {
   $(document).ready(function() {
     $('#fullpage').fullpage();
   });
+
+  $('#arrow-wrapper').addClass('animated fadeOutUp');
 });
