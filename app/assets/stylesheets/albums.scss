@@ -42,19 +42,16 @@ $menus-z-index: 10;
       top: 50%;
       left: 50%;
       margin: -20px 0 0 -25px;
-
-      // arrow sprite
+      //arrow sprite
       width: 50px;
       height: 28px;
       background-image: image-url("sprites.png")!important;
       background-position: 0 -82px;
       background-repeat: no-repeat!important;
     }
-  }
-}
-
-#arrow-wrapper {
+  //custom animation
   -webkit-animation-duration: 2.5s;
   -webkit-animation-delay: 2s;
   -webkit-animation-iteration-count: infinite;
+  }
 }

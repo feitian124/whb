@@ -19,9 +19,10 @@
 $(function() {
   $(document).foundation();
 
-  $(document).ready(function() {
+  var ready = function() {
     $('#fullpage').fullpage();
-  });
+  }
 
-  $('#arrow-wrapper').addClass('animated fadeOutUp');
+  $(document).ready(ready);
+  $(document).on('page:load', ready);
 });
