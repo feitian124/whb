@@ -2,27 +2,27 @@ require 'rails_helper'
 
 RSpec.describe ImagesController, type: :controller do
   let(:image) { create(:image) }
-  let(:valid_attributes) { attributes_for(:image).merge({user_id: image.user_id}) }
+  let(:valid_attributes) { attributes_for(:image) }
   let(:invalid_attributes) { valid_attributes.deep_dup }
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "assigns all images as @images" do
-      get :index, {:user_id => image.user_id}, valid_session
+      get :index, {:user_id => image.album.user_id}, valid_session
       expect(assigns(:images)).to eq([image])
     end
   end
 
   describe "GET #show" do
     it "assigns the requested image as @image" do
-      get :show, {:id => image.to_param, :user_id => image.user_id}, valid_session
+      get :show, {:id => image.to_param, :user_id => image.album.user_id}, valid_session
       expect(assigns(:image)).to eq(image)
     end
   end
 
   describe "GET #new" do
     it "assigns a new image as @image" do
-      get :new, {:user_id => image.user_id}, valid_session
+      get :new, {:user_id => image.album.user_id}, valid_session
       expect(assigns(:image)).to be_a_new(Image)
     end
   end
@@ -37,32 +37,32 @@ RSpec.describe ImagesController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Image" do
-        user_id = image.user_id
+        user_id = image.album.user_id
         expect {
           post :create, {:image => valid_attributes, :user_id => user_id}, valid_session
         }.to change(Image, :count).by(1)
       end
 
       it "assigns a newly created image as @image" do
-        post :create, {:image => valid_attributes, :user_id => image.user_id}, valid_session
+        post :create, {:image => valid_attributes, :user_id => image.album.user_id}, valid_session
         expect(assigns(:image)).to be_a(Image)
         expect(assigns(:image)).to be_persisted
       end
 
       it "redirects to the created image" do
-        post :create, {:image => valid_attributes, :user_id => image.user_id}, valid_session
+        post :create, {:image => valid_attributes, :user_id => image.album.user_id}, valid_session
         expect(response).to redirect_to(Image.last)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved image as @image" do
-        #post :create, {:image => invalid_attributes, :user_id => image.user_id}, valid_session
+        #post :create, {:image => invalid_attributes, :user_id => image.album.user_id}, valid_session
         #expect(assigns(:image)).to be_a_new(Image)
       end
 
       it "re-renders the 'new' template" do
-        #post :create, {:image => invalid_attributes, :user_id => image.user_id}, valid_session
+        #post :create, {:image => invalid_attributes, :user_id => image.album.user_id}, valid_session
         #expect(response).to render_template("new")
       end
     end
@@ -112,7 +112,7 @@ RSpec.describe ImagesController, type: :controller do
 
     it "redirects to the images list" do
       delete :destroy, {:id => image.to_param}, valid_session
-      expect(response).to redirect_to(user_images_url(image.user))
+      expect(response).to redirect_to(user_images_url(image.album.user))
     end
   end
 

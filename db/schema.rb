@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708020807) do
+ActiveRecord::Schema.define(version: 20150713100559) do
 
   create_table "albums", force: :cascade do |t|
     t.integer  "user_id"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20150708020807) do
 
   create_table "images", force: :cascade do |t|
     t.integer  "album_id"
-    t.integer  "user_id"
     t.string   "name"
     t.string   "src"
     t.string   "alt"
@@ -40,7 +39,6 @@ ActiveRecord::Schema.define(version: 20150708020807) do
   end
 
   add_index "images", ["album_id"], name: "index_images_on_album_id"
-  add_index "images", ["user_id"], name: "index_images_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.boolean  "subscribe",      default: true

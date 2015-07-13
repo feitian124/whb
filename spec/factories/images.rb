@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :image do
     album
-    user
     sequence(:name) { |n| "image#{n}" }
     sequence(:src) { |n| "src#{n}" }
     sequence(:alt) { |n| "alt#{n}" }
