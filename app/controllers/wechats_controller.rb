@@ -25,16 +25,18 @@ class WechatsController < ApplicationController
     begin
       tmp_file = wechat.media request[:MediaId]
       user = User.find_by(openid: request[:FromUserName])
-      img = user.images.create({
+      img = user.latest_album.images.create({
         src: tmp_file,
         media_id: request[:MediaId],
         msg_id: request[:MsgId],
         pic_url: request[:PicUrl]
       })
-      request.reply.image(request[:MediaId]) #直接将图片返回给用户
+      count = user.latest_album.images.length
+      msg = %Q{收到 #{count} 张照片, 你可以继续上传, 或者<a href="#{edit_album_url user.latest_album}">点击这里下一步制作</a>}
+      request.reply.text msg
     rescue => e
-      puts "error:#{$!}"
-      puts "at:#{$@}"
+      puts "处理上传图片失败, 媒体编号#{request[:MediaId]}"
+      puts e
       request.reply.text "从微信服务器拉取图片失败, 图片编号[#{request[:MediaId]}]" #Just echo
     end
   end
