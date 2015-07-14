@@ -32,7 +32,7 @@ class WechatsController < ApplicationController
         pic_url: request[:PicUrl]
       })
       count = user.latest_album.images.length
-      msg = %Q{收到 #{count} 张照片, 你可以继续上传, 或者<a href="#{edit_album_url user.latest_album}">点击这里下一步制作</a>}
+      msg = %Q{收到 #{count} 张照片, 你可以继续上传, 或者<a href="http://www.getxrp.com/albums/#{user.latest_album.id}/edit">点击这里下一步制作</a>}
       request.reply.text msg
     rescue => e
       puts "处理上传图片失败, 媒体编号#{request[:MediaId]}"
