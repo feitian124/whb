@@ -1,3 +1,5 @@
+@import "bourbon";
+
 $height: 50px;
 $menus-z-index: 10;
 
@@ -49,9 +51,61 @@ $menus-z-index: 10;
       background-position: 0 -82px;
       background-repeat: no-repeat!important;
     }
-  //custom animation
-  -webkit-animation-duration: 2.5s;
-  -webkit-animation-delay: 2s;
-  -webkit-animation-iteration-count: infinite;
+    //custom animation
+    @include animation-duration(2.5s);
+    @include animation-delay(2s);
+    @include animation-iteration-count(infinite);
   }
 }
+
+.select-layer{
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 1px 5px 2px #444444;
+  background-color: rgba(255,255,255,.9);
+
+  @include transform(translateY(100%));
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  -ms-transition: -ms-transform 0.3s;
+  -o-transition: -o-transform 0.3s;
+  transition: transform 0.3s;
+  //@include transition-property(transform);
+  //@include transition-duration(0.3s);
+
+  .title-bar{
+    height: 80px;
+    line-height: 80px;
+    width: 100%;
+    background-color: #F94848;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    color: #efebed;
+    font-size: 1.8rem;
+  }
+  span.cancel {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    color: #fff;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    margin-top: -15px;
+  }
+  .listWrapper{
+    width: 100%;
+    height: 100%;
+  }
+  &.showSelect{
+    height: 80%;
+    @include transform(translateY(0));
+  }
+}
+
