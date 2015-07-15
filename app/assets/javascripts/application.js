@@ -19,8 +19,12 @@
 $(function() {
   $(document).foundation();
 
+  //maybe can be improved as below article
+  //http://theflyingdeveloper.com/controller-specific-assets-with-rails-4/
   var ready = function() {
-    $('#fullpage').fullpage();
+    if($('#fullpage').length){
+      $('#fullpage').fullpage();
+    }
   }
 
   $(document).ready(ready);
