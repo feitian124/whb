@@ -1,0 +1,7 @@
+"zh-CN":
+  helpers:
+    submit:
+      create: '新建'
+      update: '更新'
+      album:
+        update: '预览'

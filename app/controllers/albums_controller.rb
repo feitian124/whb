@@ -21,6 +21,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
+    render layout: "album"
   end
 
   # POST /albums

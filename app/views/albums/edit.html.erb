@@ -1,5 +1,28 @@
-<br/>
-<%= render 'form' %>
+<div id="fullpage" class="text-center">
+  <% @album.images.each do |image| %>
+    <% src =  image.src.blank? ? image.pic_url : image.src %>
+    <div class="section"><img src="<%= src %>"></div>
+  <% end %>
+</div>
 
-<%= link_to 'Show', @album %> |
+<div class="album arrow-wrapper animated fadeOutUp">
+  <p class="arrow"></p>
+</div>
+
+<div class="album menus">
+  <div class="menu">
+    <a href="#" class="btn">菜单</a>
+  </div>
+  <div class="menu">
+    <a href="#" class="btn">菜单</a>
+  </div>
+  <div class="menu">
+    <a href="#" class="btn">菜单</a>
+  </div>
+  <div class="menu">
+    <a href="#" class="btn">菜单</a>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', user_albums_path(@album.user) %>
