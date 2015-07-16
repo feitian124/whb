@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713105209) do
+ActiveRecord::Schema.define(version: 20150716071110) do
 
   create_table "albums", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20150713105209) do
     t.string   "desc"
     t.string   "music"
     t.string   "template"
-    t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "status",     default: 0
   end
 
   add_index "albums", ["user_id"], name: "index_albums_on_user_id"
@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(version: 20150713105209) do
   end
 
   add_index "images", ["album_id"], name: "index_images_on_album_id"
+
+  create_table "songs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "desc"
+    t.string   "src"
+    t.string   "singer"
+    t.string   "collection"
+    t.integer  "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.boolean  "subscribe",      default: true
