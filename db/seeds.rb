@@ -9,9 +9,10 @@
 require 'factory_girl'
 
 users = FactoryGirl.create_list(:user, 10)
+song = FactoryGirl.create(:song)
 
 users.each do |user|
-  albums = FactoryGirl.create_list(:album, 10, user: user)
+  albums = FactoryGirl.create_list(:album, 10, user: user, song: song)
   albums.each do |album|
     images = FactoryGirl.create_list(:image, 10, album: album)
   end
