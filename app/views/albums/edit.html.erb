@@ -30,8 +30,21 @@
     <span class="cancel">X</span>
   </div>
   <div class="listWrapper">
+    <ul class="list-tpl hide"></ul>
+    <ul class="list-music hide"></ul>
+    <ul class="list-photo hide "></ul>
+    <ul class="list-title hide"></ul>
   </div>
 </div>
+
+<div class="audio-box" style="display: none">
+  <audio id="myaudio" src="/musics/shenshi.m4a"   loop="loop" autoplay="autoplay" controls="controls">
+    你的浏览器不支持HTML5
+  </audio>
+  <input type="button" onclick="document.getElementById('myaudio').play()" value='播放' id="play-btn"  />
+  <input type="button" onclick="document.getElementById('myaudio').pause()" value='停止' id="pause-btn" />
+</div>
+<a class="music-icon music-trigger play icon-rotate" href="javascript:;"></a>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', user_albums_path(@album.user) %>

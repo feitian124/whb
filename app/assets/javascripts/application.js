@@ -51,9 +51,20 @@ $(function() {
         layer.find('.title').text(title);
         layer.addClass('showSelect');
     });
+
     $('.select-layer .cancel').on('click',function(e){
       e.stopPropagation();
       $('.select-layer').removeClass('showSelect');
+    });
+
+    $(".music-trigger").click(function(document){
+      if($(this).hasClass("play")){
+        $('#pause-btn').click();
+        $(this).removeClass("play icon-rotate").addClass("pause");
+      } else {
+        $('#play-btn').click();
+        $(this).removeClass("pause").addClass("play icon-rotate");
+      }
     });
   }
 
