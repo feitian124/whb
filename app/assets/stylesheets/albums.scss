@@ -80,6 +80,9 @@ $menus-z-index: 10;
     text-align: center;
     position: relative;
     overflow: hidden;
+    .title {
+      color: #efebed;
+    }
   }
 
 span.cancel {
