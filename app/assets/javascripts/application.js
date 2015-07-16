@@ -51,6 +51,10 @@ $(function() {
         layer.find('.title').text(title);
         layer.addClass('showSelect');
     });
+    $('.select-layer .cancel').on('click',function(e){
+      e.stopPropagation();
+      $('.select-layer').removeClass('showSelect');
+    });
   }
 
   $(document).ready(ready);
