@@ -1,8 +1,4 @@
 $(function() {
-
-  // sound
-  var soundID = "shenshi";
-
   //maybe can be improved as below article
   //http://theflyingdeveloper.com/controller-specific-assets-with-rails-4/
   var ready = function() {
@@ -48,14 +44,23 @@ $(function() {
         createjs.Sound.stop();
       } else {
         $(this).removeClass("pause").addClass("play icon-rotate");
-        createjs.Sound.play(soundID);
+        createjs.Sound.play("sound");
       }
     });
 
-    createjs.Sound.registerSound("/musics/shenshi.m4a", soundID);
+    $(".listWrapper > .music .play").on('click', function(e){
+      createjs.Sound.stop();
+      var src = $(this).parents(".row").find("input:hidden").val();
+      var name = $(this).parents(".row").find("small-9").text();
+      createjs.Sound.registerSound(src, "sound");
+      createjs.Sound.on("fileload", function(e){
+        createjs.Sound.play("sound");
+      });
+    });
+
+    //createjs.Sound.registerSound("/musics/shenshi.m4a", "");
   }
 
   $(document).ready(ready);
   $(document).on('page:load', ready);
 });
-
