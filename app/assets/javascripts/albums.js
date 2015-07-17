@@ -14,7 +14,6 @@ $(function() {
     $('.menus > .menu > a').on('click',function(e){
         e.stopPropagation();
         var id = $(this).attr('id');
-        var layer = $('.select-layer');
         var title = '';
         switch (id){
             case 'tpl':
@@ -32,8 +31,10 @@ $(function() {
             default :
                 break;
         }
-        layer.find('.title').text(title);
-        layer.addClass('showSelect');
+        $('.select-layer > .title-bar > .title').text(title);
+        $('.listWrapper').children().addClass('hide');
+        $('.listWrapper').children('.'+id).removeClass('hide');
+        $('.select-layer').addClass('showSelect');
     });
 
     $('.select-layer .cancel').on('click',function(e){

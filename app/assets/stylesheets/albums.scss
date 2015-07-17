@@ -67,11 +67,6 @@ $menus-z-index: 10;
   background-color: rgba(255,255,255,.9);
 
   @include transform(translateY(100%));
-  //-webkit-transition: -webkit-transform 0.3s;
-  //-moz-transition: -moz-transform 0.3s;
-  //-ms-transition: -ms-transform 0.3s;
-  //-o-transition: -o-transform 0.3s;
-  //transition: transform 0.3s;
   @include transition-property(transform);
   @include transition-duration(0.3s);
 
