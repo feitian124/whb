@@ -67,13 +67,8 @@ $menus-z-index: 10;
   background-color: rgba(255,255,255,.9);
 
   @include transform(translateY(100%));
-  -webkit-transition: -webkit-transform 0.3s;
-  -moz-transition: -moz-transform 0.3s;
-  -ms-transition: -ms-transform 0.3s;
-  -o-transition: -o-transform 0.3s;
-  transition: transform 0.3s;
-  //@include transition-property(transform);
-  //@include transition-duration(0.3s);
+  @include transition-property(transform);
+  @include transition-duration(0.3s);
 
   .title-bar{
     background-color: #F94848;
@@ -108,23 +103,22 @@ span.cancel {
   }
 }
 
-.audio-box{right: 0px;top:0px;width:100px;height: 50px;z-index: 999;position: fixed;}
 .music-icon {
     background-image: url("/images/music-icon.png");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
     height: 10%;
+    width: 10%;
     position: fixed;
     right: 20px;
     top: 20px;
-    width: 10%;
-    text-indent: 999999;
-    z-index: 999;
 }
 
-.icon-rotate{-webkit-animation: RotataZ 4s linear infinite;}
 @-webkit-keyframes RotataZ{
   0%{-webkit-transform: rotateZ(0deg);}
   100%{-webkit-transform: rotateZ(360deg);}
+}
+.icon-rotate {
+  -webkit-animation: RotataZ 4s linear infinite;
 }

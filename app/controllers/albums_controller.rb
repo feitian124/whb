@@ -21,6 +21,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
+    @songs = Song.all
     render layout: "album"
   end
 
