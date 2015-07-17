@@ -124,7 +124,7 @@ span.cancel {
 }
 
 .icon-rotate{-webkit-animation: RotataZ 4s linear infinite;}
-@-webkit-keyframes RotataZ{
+  @-webkit-keyframes RotataZ{
   0%{-webkit-transform: rotateZ(0deg);}
   100%{-webkit-transform: rotateZ(360deg);}
 }
