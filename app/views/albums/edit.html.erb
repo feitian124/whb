@@ -39,10 +39,8 @@
           <div class="small-1 columns"><%= i %><input type="hidden" value=<%= song.src %> /></div>
           <div class="small-9 columns"><%= "#{song.singer} #{song.name}" %></div>
           <div class="small-2 columns">
-            <div class="loading">
-              <%= image_tag "loading-spinning-bubbles.svg", size: "32x32" %>
+            <div class="indicator">
             </div>
-            <a href="#" class="play">确定</a>
           </div>
         </div>
         <hr/>

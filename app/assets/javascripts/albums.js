@@ -49,12 +49,17 @@ $(function() {
     });
 
     $(".listWrapper > .music > .row").on('click', function(e){
+      e.stopPropagation();
       createjs.Sound.stop();
       var src = $(this).find("input:hidden").val();
       var name = $(this).find("small-9").text();
+      var indicator = $(this).find(".indicator");
+      $(this).parents('.music').find(".indicator").removeClass().addClass('indicator');
       createjs.Sound.registerSound(src, "sound");
+      indicator.addClass("loading");
       createjs.Sound.on("fileload", function(e){
         createjs.Sound.play("sound");
+        indicator.removeClass("loading").addClass("playing");
       });
     });
 
