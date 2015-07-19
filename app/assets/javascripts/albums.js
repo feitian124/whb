@@ -48,10 +48,10 @@ $(function() {
       }
     });
 
-    $(".listWrapper > .music .play").on('click', function(e){
+    $(".listWrapper > .music > .row").on('click', function(e){
       createjs.Sound.stop();
-      var src = $(this).parents(".row").find("input:hidden").val();
-      var name = $(this).parents(".row").find("small-9").text();
+      var src = $(this).find("input:hidden").val();
+      var name = $(this).find("small-9").text();
       createjs.Sound.registerSound(src, "sound");
       createjs.Sound.on("fileload", function(e){
         createjs.Sound.play("sound");
