@@ -50,18 +50,21 @@ $(function() {
     });
 
     var indicator;
+    var pick;
     $(".listWrapper > .music > .row").on('click', function(e){
       e.stopPropagation();
-      createjs.Sound.stop();
+      createjs.Sound.removeAllSounds();
       var src = $(this).find("input:hidden").val();
-      var name = $(this).find("small-9").text();
       indicator = $(this).find(".indicator");
+      pick = $(this).find(".pick");
       $(this).parents('.music').find(".indicator").removeClass().addClass('indicator');
+      $(this).parents('.music').find(".pick").addClass('hide');
       createjs.Sound.registerSound(src, "sound");
       indicator.addClass("loading");
       createjs.Sound.on("fileload", function(e){
         createjs.Sound.play("sound");
         indicator.removeClass("loading").addClass("playing");
+        pick.removeClass("hide");
       });
     });
 
