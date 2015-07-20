@@ -36,6 +36,7 @@ $(function() {
     $('.select-layer .cancel').on('click',function(e){
       e.stopPropagation();
       $('.select-layer').removeClass('showSelect');
+      createjs.Sound.stop();
     });
 
     $(".music-icon").click(function(document){
@@ -48,12 +49,13 @@ $(function() {
       }
     });
 
+    var indicator;
     $(".listWrapper > .music > .row").on('click', function(e){
       e.stopPropagation();
       createjs.Sound.stop();
       var src = $(this).find("input:hidden").val();
       var name = $(this).find("small-9").text();
-      var indicator = $(this).find(".indicator");
+      indicator = $(this).find(".indicator");
       $(this).parents('.music').find(".indicator").removeClass().addClass('indicator');
       createjs.Sound.registerSound(src, "sound");
       indicator.addClass("loading");
