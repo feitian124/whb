@@ -35,10 +35,9 @@
     </div>
     <div class="music hide">
       <% @songs.each_with_index do |song, i| %>
-        <div class="row">
+        <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
           <div class="small-8 columns">
             <%= "#{i} #{song.singer} #{song.name}" %>
-            <input type="hidden" value=<%= song.src %> />
           </div>
           <div class="small-4 columns">
             <div class="indicator"></div>
@@ -58,7 +57,10 @@
 </div>
 
 <div class="music-icon"></div>
-<input type="hidden" id="current_song" value=<%= @album.song.src %> />
+
+<audio>
+  <source src="<%= @album.song.src %>" />
+</audio>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', user_albums_path(@album.user) %>

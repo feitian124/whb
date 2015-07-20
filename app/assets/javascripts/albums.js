@@ -56,7 +56,7 @@ $(function() {
     $(".listWrapper > .music > .row").on('click', function(e){
       e.stopPropagation();
       createjs.Sound.removeAllSounds();
-      var src = $(this).find("input:hidden").val();
+      var src = $(this).attr("data-song-src");
       indicator = $(this).find(".indicator");
       pick = $(this).find(".pick");
       $(this).parents('.music').find(".indicator").removeClass().addClass('indicator');
