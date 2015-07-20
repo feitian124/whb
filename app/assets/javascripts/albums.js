@@ -70,6 +70,24 @@ $(function() {
       });
     });
 
+    $(".listWrapper > .music .pick").on('click', function(e){
+      e.stopPropagation();
+      $.ajax({
+        type: 'put',
+        url: '/albums/1',
+        data: {
+          album: {
+            song_id: 2
+          }
+        },
+        dataType : 'json',
+        success : function(data) {
+          console.log('data:', data);
+        }
+      });
+    });
+
+
     //createjs.Sound.registerSound("/musics/shenshi.m4a", "");
   }
 

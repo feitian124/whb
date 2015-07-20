@@ -58,6 +58,7 @@
 </div>
 
 <div class="music-icon"></div>
+<input type="hidden" id="current_song" value=<%= @album.song.src %> />
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', user_albums_path(@album.user) %>
