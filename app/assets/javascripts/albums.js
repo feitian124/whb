@@ -10,23 +10,7 @@ $(function() {
     $('.menus > .menu > a').on('click',function(e){
         e.stopPropagation();
         var id = $(this).attr('id');
-        var title = '';
-        switch (id){
-            case 'tpl':
-                title = '更换模板';
-                break;
-            case 'music':
-                title = '更换音乐';
-                break;
-            case 'pics':
-                title = '管理相册';
-                break;
-            case 'title':
-                title = '修改标题';
-                break;
-            default :
-                break;
-        }
+        var title = $(this).attr('data-title');
         $('.select-layer > .title-bar > .title').text(title);
         $('.listWrapper').children().addClass('hide');
         $('.listWrapper').children('.'+id).removeClass('hide');
