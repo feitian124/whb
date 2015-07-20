@@ -36,7 +36,9 @@ $(function() {
     $('.select-layer .cancel').on('click',function(e){
       e.stopPropagation();
       $('.select-layer').removeClass('showSelect');
-      createjs.Sound.stop();
+      createjs.Sound.removeAllSounds();
+      $('.music').find(".indicator").removeClass().addClass('indicator');
+      $('.music').find(".pick").addClass('hide');
     });
 
     $(".music-icon").click(function(document){
