@@ -6,7 +6,7 @@ $(function() {
       $('#fullpage').fullpage();
     }
 
-    // 菜单面板
+    // 显示选中的菜单页面, 其余的隐藏
     $('.menus > .menu > a').on('click',function(e){
         e.stopPropagation();
         var id = $(this).attr('id');
