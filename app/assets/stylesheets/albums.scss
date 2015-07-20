@@ -99,12 +99,18 @@ $menus-z-index: 10;
   .listWrapper{
     width: 100%;
     height: 100%;
+    .row {
+      min-height: 48px;
+      line-height: 48px;
+      border-bottom:1px solid #DBDBDB;
+    }
   }
   .playing {
     background-image: asset-url("loading-bars.svg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
+    margin: 8px;
     width: 32px;
     height: 32px;
   }
@@ -113,6 +119,7 @@ $menus-z-index: 10;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
+    margin: 8px;
     width: 32px;
     height: 32px;
   }
