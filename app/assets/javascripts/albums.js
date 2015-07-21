@@ -1,5 +1,7 @@
 $(function() {
-
+  /**
+   * 播放或者暂停背景音乐
+   */
   var toggleMusic = function(play) {
     var audio = document.getElementById("audio");
     var icon = $("#music-icon");
@@ -20,6 +22,26 @@ $(function() {
     }
   }
 
+  /**
+   * 当有 menu 参数时, 展开该菜单
+   * 当没有 menu 参数时, 收起当前菜单
+   */
+  var toggleMenu = function(menu) {
+    if(menu) {
+      var content = $('.listWrapper').find('.' + menu.attr("id"));
+      content.removeClass('hide');
+      content.siblings().addClass('hide');
+      $('.select-layer > .title-bar > .title').text(menu.attr('data-title'));
+      $('.select-layer').addClass('showSelect');
+    } else {
+      $('.select-layer').removeClass('showSelect');
+      $('.listWrapper').children().addClass('hide');
+      $('.music').find(".indicator").removeClass().addClass('indicator');
+      $('.music').find(".pick").removeClass('show');
+      createjs.Sound.removeAllSounds();
+    }
+  }
+
   //maybe can be improved as below article
   //http://theflyingdeveloper.com/controller-specific-assets-with-rails-4/
   var ready = function() {
@@ -27,24 +49,15 @@ $(function() {
       $('#fullpage').fullpage();
     }
 
-    // 显示选中的菜单页面, 其余的隐藏
     $('.menus > .menu > a').on('click',function(e){
         e.stopPropagation();
-        var id = $(this).attr('id');
-        var title = $(this).attr('data-title');
-        $('.select-layer > .title-bar > .title').text(title);
-        $('.listWrapper').children().addClass('hide');
-        $('.listWrapper').children('.'+id).removeClass('hide');
-        $('.select-layer').addClass('showSelect');
+        toggleMenu($(this));
         toggleMusic(false);
     });
 
     $('.select-layer .cancel').on('click',function(e){
       e.stopPropagation();
-      $('.select-layer').removeClass('showSelect');
-      createjs.Sound.removeAllSounds();
-      $('.music').find(".indicator").removeClass().addClass('indicator');
-      $('.music').find(".pick").removeClass('show');
+      toggleMenu();
     });
 
     $("#music-icon").on('click', function(e){
