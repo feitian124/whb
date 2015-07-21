@@ -56,17 +56,20 @@ $(function() {
 
     $(".listWrapper > .music .pick").on('click', function(e){
       e.stopPropagation();
+      var albumId = $("#albumId").val();
+      var songId = $(this).parents(".row").attr("data-song-id");
+      var songSrc = $(this).parents(".row").attr("data-song-src");
       $.ajax({
         type: 'put',
-        url: '/albums/1',
+        url: '/albums/' + albumId,
         data: {
           album: {
-            song_id: 2
+            song_id: songId
           }
         },
         dataType : 'json',
         success : function(data) {
-          console.log('data:', data);
+          $("#audio").attr("src", songSrc);
         }
       });
     });

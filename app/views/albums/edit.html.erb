@@ -54,9 +54,10 @@
 </div>
 
 <div class="music-icon"></div>
+<input type="hide" id="albumId" value="<%= @album.id %>" />
 
-<audio>
-  <source src="<%= @album.song.src %>" />
+<audio id="audio" src="<%= @album.song.src %>" >
+  <h1>您的浏览器不支持 audio 标签。</h1>
 </audio>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
