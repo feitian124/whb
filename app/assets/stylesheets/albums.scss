@@ -71,12 +71,13 @@ $menus-z-index: 10;
   @include transition-duration(0.3s);
 
   &.showSelect{
-    height: 80%;
+    height: 100%;
     @include transform(translateY(0));
   }
   .title-bar{
     background-color: #F94848;
     text-align: center;
+    height:8%;
     position: relative;
     overflow: hidden;
     .title {
@@ -160,4 +161,42 @@ $menus-z-index: 10;
 }
 .play {
   -webkit-animation: RotataZ 4s linear infinite;
+}
+
+.delPhotos{
+  position:relative;
+
+}
+.delPhoto{
+  display:block;
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  width:30px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  color:white;
+  background-color:red;
+  border-radius:50%;
+  font-size:1.2rem;
+}
+
+.delPhoto a:visited{
+  color:white;
+}
+
+
+.modifyTitle{
+  left:20%;
+}
+
+.resetTitle
+{
+  left:20%;
+}
+
+.albumTitle{
+  top:20%;
+  height:20%;
 }
