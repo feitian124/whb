@@ -53,10 +53,10 @@
   </div>
 </div>
 
-<div class="music-icon"></div>
+<div class="music-icon play" id="music-icon"></div>
 <input type="hide" id="albumId" value="<%= @album.id %>" />
 
-<audio id="audio" src="<%= @album.song.src %>" >
+<audio id="audio" src="<%= @album.song.src %>" autoplay="autoplay" loop="loop">
   <h1>您的浏览器不支持 audio 标签。</h1>
 </audio>
 

@@ -1,4 +1,25 @@
 $(function() {
+
+  var toggleMusic = function(play) {
+    var audio = document.getElementById("audio");
+    var icon = $("#music-icon");
+    if(play === undefined) {
+      if(audio.paused){
+        icon.addClass("play");
+        audio.play();
+      } else {
+        icon.removeClass("play");
+        audio.pause();
+      }
+    } else if(play === true) {
+      icon.addClass("play");
+      audio.play();
+    } else {
+      icon.removeClass("play");
+      audio.pause();
+    }
+  }
+
   //maybe can be improved as below article
   //http://theflyingdeveloper.com/controller-specific-assets-with-rails-4/
   var ready = function() {
@@ -15,6 +36,7 @@ $(function() {
         $('.listWrapper').children().addClass('hide');
         $('.listWrapper').children('.'+id).removeClass('hide');
         $('.select-layer').addClass('showSelect');
+        toggleMusic(false);
     });
 
     $('.select-layer .cancel').on('click',function(e){
@@ -25,14 +47,9 @@ $(function() {
       $('.music').find(".pick").removeClass('show');
     });
 
-    $(".music-icon").click(function(document){
-      if($(this).hasClass("play")){
-        $(this).removeClass("play icon-rotate").addClass("pause");
-        createjs.Sound.stop();
-      } else {
-        $(this).removeClass("pause").addClass("play icon-rotate");
-        createjs.Sound.play("sound");
-      }
+    $("#music-icon").on('click', function(e){
+      e.stopPropagation();
+      toggleMusic();
     });
 
     var indicator;
@@ -70,6 +87,7 @@ $(function() {
         dataType : 'json',
         success : function(data) {
           $("#audio").attr("src", songSrc);
+          document.getElementById("audio").pause();
         }
       });
     });
