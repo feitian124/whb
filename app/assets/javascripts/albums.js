@@ -36,10 +36,31 @@ $(function() {
     } else {
       $('.select-layer').removeClass('showSelect');
       $('.listWrapper').children().addClass('hide');
-      $('.music').find(".indicator").removeClass().addClass('indicator');
-      $('.music').find(".pick").removeClass('show');
-      createjs.Sound.removeAllSounds();
+      toggleListen();
     }
+  }
+
+  /**
+   * 当有 row 参数时, 试听歌曲 row 行的歌曲
+   * 当没有 row 参数时, 停止当前试听
+   */
+  var indicator, pick;
+  var toggleListen = function(row) {
+      createjs.Sound.removeAllSounds();
+      $('.music').find(".indicator").removeClass("playing loading");
+      $('.music').find(".pick").removeClass('show');
+      if(row) {
+        var src = row.attr("data-song-src");
+        indicator = row.find(".indicator");
+        pick = row.find(".pick");
+        createjs.Sound.registerSound(src, "sound");
+        indicator.addClass("loading");
+        createjs.Sound.on("fileload", function(e){
+          createjs.Sound.play("sound");
+          indicator.removeClass("loading").addClass("playing");
+          pick.addClass("show");
+        });
+      }
   }
 
   //maybe can be improved as below article
@@ -65,23 +86,9 @@ $(function() {
       toggleMusic();
     });
 
-    var indicator;
-    var pick;
     $(".listWrapper > .music > .row").on('click', function(e){
       e.stopPropagation();
-      createjs.Sound.removeAllSounds();
-      var src = $(this).attr("data-song-src");
-      indicator = $(this).find(".indicator");
-      pick = $(this).find(".pick");
-      $(this).parents('.music').find(".indicator").removeClass().addClass('indicator');
-      $(this).parents('.music').find(".pick").removeClass('show');
-      createjs.Sound.registerSound(src, "sound");
-      indicator.addClass("loading");
-      createjs.Sound.on("fileload", function(e){
-        createjs.Sound.play("sound");
-        indicator.removeClass("loading").addClass("playing");
-        pick.addClass("show");
-      });
+      toggleListen($(this));
     });
 
     $(".listWrapper > .music .pick").on('click', function(e){
@@ -100,13 +107,11 @@ $(function() {
         dataType : 'json',
         success : function(data) {
           $("#audio").attr("src", songSrc);
-          document.getElementById("audio").pause();
+          toggleMenu();
+          toggleMusic(true);
         }
       });
     });
-
-
-    //createjs.Sound.registerSound("/musics/shenshi.m4a", "");
   }
 
   $(document).ready(ready);
