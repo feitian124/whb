@@ -22,7 +22,7 @@ $(function() {
       $('.select-layer').removeClass('showSelect');
       createjs.Sound.removeAllSounds();
       $('.music').find(".indicator").removeClass().addClass('indicator');
-      $('.music').find(".pick").addClass('hide');
+      $('.music').find(".pick").removeClass('show');
     });
 
     $(".music-icon").click(function(document){
@@ -44,13 +44,13 @@ $(function() {
       indicator = $(this).find(".indicator");
       pick = $(this).find(".pick");
       $(this).parents('.music').find(".indicator").removeClass().addClass('indicator');
-      $(this).parents('.music').find(".pick").addClass('hide');
+      $(this).parents('.music').find(".pick").removeClass('show');
       createjs.Sound.registerSound(src, "sound");
       indicator.addClass("loading");
       createjs.Sound.on("fileload", function(e){
         createjs.Sound.play("sound");
         indicator.removeClass("loading").addClass("playing");
-        pick.removeClass("hide");
+        pick.addClass("show");
       });
     });
 

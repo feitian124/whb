@@ -36,12 +36,10 @@
     <div class="music hide">
       <% @songs.each_with_index do |song, i| %>
         <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
-          <div class="small-8 columns">
+          <div class="small-12 columns">
             <%= "#{i} #{song.singer} #{song.name}" %>
-          </div>
-          <div class="small-4 columns">
             <div class="indicator"></div>
-            <a href="#" class="pick hide">使用</a>
+            <a href="#" class="button tiny pick">使用</a>
           </div>
         </div>
       <% end %>
