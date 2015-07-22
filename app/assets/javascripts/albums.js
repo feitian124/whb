@@ -115,18 +115,17 @@ $(function() {
 
     $(".delPhoto").on('click', function(e){
       e.stopPropagation();
-      if(confirm("delete this photo ?"))
+      if(confirm("确认删除这张照片吗？"))
       {
         $(this).parent().hide();
       }
     });
 
-    $(".modifyTitle").on('click',function(){
-        alert($(".albumTitle").val());
+    $(".modify-title").on('click',function(){
+        alert($(".title-content").val());
+        //标题保存到数据库中
     });
 
-    $(".resetTitle").on('click',function(){
-    });
   }
 
   $(document).ready(ready);
