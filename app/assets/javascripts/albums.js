@@ -115,9 +115,17 @@ $(function() {
 
     $(".delPhoto").on('click', function(e){
       e.stopPropagation();
-      if(confirm("确认删除这张照片吗？"))
-      {
-        $(this).parent().hide();
+      var imgId = $(this).siblings("img").attr("data-id");
+      var _this = this;
+      if(confirm("确认删除这张照片吗？")) {
+        $.ajax({
+          type: 'delete',
+          url: '/images/' + imgId,
+          dataType : 'json',
+          success : function(data) {
+            $(_this).parent().hide();
+          }
+        });
       }
     });
 
