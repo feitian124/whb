@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     if albums.unpublished.count > 0
       albums.unpublished.last
     else
-      albums.create
+      albums.create song: Song.second
     end
   end
 end
