@@ -21,8 +21,12 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
-    @songs = Song.all
-    render layout: "album"
+    if @album.user.openid == params[:openid]
+      @songs = Song.all
+      render layout: "album"
+    else
+      redirect_to album_path(@album)
+    end
   end
 
   # POST /albums

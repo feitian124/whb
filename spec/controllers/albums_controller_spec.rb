@@ -28,9 +28,13 @@ RSpec.describe AlbumsController, type: :controller do
   end
 
   describe "GET #edit" do
-    it "assigns the requested album as @album" do
+    it "redirect to @album withou openid" do
       get :edit, {:id => album.to_param}, valid_session
-      expect(assigns(:album)).to eq(album)
+      expect(response).to redirect_to(album)
+    end
+    it "render album layout with openid" do
+      get :edit, {:id => album.to_param, openid: album.user.openid}, valid_session
+      expect(response).to render_template("layouts/album")
     end
   end
 
