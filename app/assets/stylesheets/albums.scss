@@ -186,17 +186,26 @@ $menus-z-index: 10;
   color:white;
 }
 
-
-.modifyTitle{
-  left:20%;
+.modify-title{
+  left:30%;
+  top:150px;
+  font-size: 1.0rem;
 }
 
-.resetTitle
-{
-  left:20%;
+.title-content{
+  display: block;
+  position: relative;
+  height: 100px;
+  width: 80%;
+  top: 130px;
+  left: 10%;
 }
 
-.albumTitle{
-  top:20%;
-  height:20%;
+.title-lead{
+  display: block;
+  position: relative;
+  top: 120px;
+  left: 10%;
+  font-size: 1.0rem;
+  color:gray;
 }
