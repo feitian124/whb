@@ -8,7 +8,7 @@ class WechatsController < ApplicationController
 
   # 当请求的文字信息内容为'help'时, 使用这个responder处理
   on :text, with:"help" do |request, help|
-    request.reply.text "help content" #回复帮助信息
+    request.reply.text "help content: #{wechat.jsapi_ticket.ticket}" #回复帮助信息
   end
 
   # 当请求的文字信息内容为'<n>条新闻'时, 使用这个responder处理, 并将n作为第二个参数
