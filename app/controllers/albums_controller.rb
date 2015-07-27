@@ -8,6 +8,7 @@ class AlbumsController < ApplicationController
   # GET /albums.json
   def index
     @albums = @user.albums
+    render layout: "album"
   end
 
   # GET /albums/1
