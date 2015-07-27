@@ -2,6 +2,8 @@ class AlbumsController < ApplicationController
   before_action :set_user, only: [:new, :create, :index]
   before_action :set_album, only: [:show, :edit, :update, :destroy]
 
+  wechat_responder
+
   # GET /albums
   # GET /albums.json
   def index
