@@ -1,3 +1,6 @@
+//= require fullpage.js/jquery.fullPage.js
+//= require jssdk.js
+
 $(function() {
   /**
    * 播放或者暂停背景音乐

@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require foundation
-//= require fullpage.js/jquery.fullPage.js
-//= require_tree .
 
 $(function() {
   $(document).foundation();
