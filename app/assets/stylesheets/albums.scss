@@ -230,8 +230,7 @@ $menus-z-index: 10;
   bottom: 0;
   width: 5px;
   background: #afdcf8;
-  left: 8%;
-  margin-left: -10px;
+  left: 1.5rem;
 }
 
 .my-album > li {
@@ -297,14 +296,12 @@ $menus-z-index: 10;
 /* 时间轴上的圆圈 */
 .my-album > li .time-circle {
   position: absolute;
-  width: 17%;
-  height: 17%; 
+  width: 3rem;
+  height: 3rem; 
   text-align: center;
   background: #afdcf8;
   border-radius: 50%;
-  margin: 0 0 0 -11%;
-  left: 8%;
-  top: 20%;
+  top: 18%;
 
   .album-date{
     color: black;
@@ -315,8 +312,8 @@ $menus-z-index: 10;
   .album-year{
     color: white;
     position: absolute;
-    top: 20px;
-    left: 25%;
+    top: 24px;
+    left: 22%;
   }
 }
 
