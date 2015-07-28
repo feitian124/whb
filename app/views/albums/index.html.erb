@@ -1,56 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to '创建新相册', new_user_album_path(@user) %>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="1">id</th>
-      <th colspan="1">name</th>
-      <th colspan="1">desc</th>
-      <th colspan="3">actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<ul class="my-album">
   <% @albums.each do |album| %>
-    <ul class="my-album">
-      <li>
-        <div class="time-circle">
+    <li>
+      <div class="time-circle">
         <p class="album-date">07-23</p>
         <p class="album-year">2015</p>
+      </div>
+
+      <div class="right-content">
+        <h7>用户自定义的标题</h7>
+        <div class="photo-container">
+          <img class="photo-cover" src="http://placehold.it/350x350">
         </div>
-        
-        <div class="right-content">   
-          <h7>用户自定义的标题</h7>
-          <div class="photo-container">           
-            <img class="photo-cover" src="http://placehold.it/350x350">          
-          </div>
-          <div class="album-desc">相册浏览量:10次<br/>转发:0次,分享:0次</div>
-          <div class="album-manage">
-            <a href="#" class="edit-album button info tiny">编辑</a>
-            <a href="#" class="delete-album button info tiny">删除</a>  
-          </div>
-      
+        <div class="album-desc">
+          相册浏览量:10次<br/>转发:0次,分享:0次
         </div>
-      </li>
-    <% end %>
-
-      <% @albums.each do |album| %>
-        <tr>
-          <td><%= album.id %></td>
-          <td><%= album.name %></td>
-          <td><%= album.desc %></td>
-
-          <td><%= link_to '详情', album %></td>
-          <td><%= link_to '编辑', edit_album_path(album) %></td>
-          <td><%= link_to '删除', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>    
-
-    <% end %>
-
-    </ul>
-
-
-  </tbody>
-</table>
+        <div class="album-manage">
+          <a href="#" class="edit-album button info tiny">编辑</a>
+          <a href="#" class="delete-album button info tiny">删除</a>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
