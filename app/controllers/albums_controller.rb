@@ -1,8 +1,10 @@
 class AlbumsController < ApplicationController
+  wechat_responder
+
   before_action :set_user, only: [:new, :create, :index]
   before_action :set_album, only: [:show, :edit, :update, :destroy]
-
-  wechat_responder
+  # 覆盖 wechat-rails(wechat_responder引入) 中的检查签名逻辑, 不检查
+  skip_before_action :verify_signature, only: [:show, :create]
 
   # GET /albums
   # GET /albums.json
