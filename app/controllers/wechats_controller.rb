@@ -81,7 +81,6 @@ class WechatsController < ApplicationController
 
   # 当无任何responder处理用户信息时,使用这个responder处理
   on :fallback do |request|
-    puts "fallback"
     request.reply.text "fallback"
   end
 end

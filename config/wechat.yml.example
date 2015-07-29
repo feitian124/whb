@@ -5,6 +5,7 @@ default: &default
   encodingaeskey: ''
   access_token: '/var/tmp/wechat_access_token'
   jsapi_ticket: '/var/tmp/wechat_jsapi_ticket'
+  domain: 'www.getxrp.com'
 
 production:
   appid: <%= ENV['WECHAT_APPID'] %>
