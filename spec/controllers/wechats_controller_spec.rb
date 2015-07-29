@@ -16,11 +16,18 @@ RSpec.describe WechatsController, type: :controller do
       :MsgId => "1234567890123456",
     }
   end
+  let(:txt_message){message_base.merge(:MsgType => "text", :Content => "txt message content")}
   let(:image_message){message_base.merge(:MsgType => "image", :MediaId => "1234567890", :PicUrl => "http://localhost:3000/1.jpg")}
 
   it "verify server url is valid" do
     get :show, signature_params.merge(echostr:"hello")
     expect(response.body).to eq("hello")
+  end
+
+  it "on text" do
+    post :create, {:xml => txt_message}.merge(signature_params), valid_session
+    expect(response.status).to eq(200)
+    #expect(response.content_type).to eq('text/xml')
   end
 
   it "on image" do
