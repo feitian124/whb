@@ -21,7 +21,7 @@
         -->
         <div class="album-manage">
           <%= link_to '查看', album_path(album), class: "edit-album button info tiny" %>
-          <%= link_to '删除', album_path(album), class: "delete-album button info tiny", method: "delete", confirm: "确定删除?" %>
+          <%= link_to '删除', album_path(album), class: "delete-album button info tiny", method: :delete, data: { confirm: "确定删除?" }%>
         </div>
       </div>
     </li>
