@@ -7,9 +7,13 @@ RSpec.describe AlbumsController, type: :controller do
   let(:album) { create(:album) }
 
   describe "GET #index" do
-    it "assigns all albums as @albums" do
-      get :index, {user_id: album.user_id}, valid_session
+    it "assigns all albums as @albums with openid" do
+      get :index, {user_id: album.user_id, openid: album.user.openid}, valid_session
       expect(assigns(:albums)).to eq([album])
+    end
+    it "redirect to root as @albums with openid" do
+      get :index, {user_id: album.user_id}, valid_session
+      expect(response).to redirect_to(root_path)
     end
   end
 
@@ -28,7 +32,7 @@ RSpec.describe AlbumsController, type: :controller do
   end
 
   describe "GET #edit" do
-    it "redirect to @album withou openid" do
+    it "redirect to @album without openid" do
       get :edit, {:id => album.to_param}, valid_session
       expect(response).to redirect_to(album)
     end
