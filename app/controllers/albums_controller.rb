@@ -9,8 +9,13 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = @user.albums
-    render layout: "album"
+    if @user.openid == params[:openid]
+      @albums = @user.albums
+      render layout: "album"
+    else
+      flash[:notice] = "你无权访问上一个页面, 已跳转至主页.."
+      redirect_to root_path
+    end
   end
 
   # GET /albums/1
