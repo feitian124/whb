@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716075412) do
+ActiveRecord::Schema.define(version: 20150730025321) do
 
   create_table "albums", force: :cascade do |t|
     t.integer  "user_id"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20150716075412) do
   add_index "albums", ["user_id"], name: "index_albums_on_user_id"
 
   create_table "images", force: :cascade do |t|
-    t.integer  "album_id"
     t.string   "name"
     t.string   "src"
     t.string   "alt"
@@ -39,6 +38,7 @@ ActiveRecord::Schema.define(version: 20150716075412) do
     t.string   "msg_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "album_id"
   end
 
   add_index "images", ["album_id"], name: "index_images_on_album_id"
@@ -55,11 +55,11 @@ ActiveRecord::Schema.define(version: 20150716075412) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.boolean  "subscribe",      default: true
+    t.boolean  "subscribe",          default: true
     t.string   "openid"
     t.string   "nickname"
     t.integer  "sex"
-    t.string   "language",       default: "zh_CN"
+    t.string   "language",           default: "zh_CN"
     t.string   "city"
     t.string   "province"
     t.string   "country"
@@ -67,11 +67,14 @@ ActiveRecord::Schema.define(version: 20150716075412) do
     t.integer  "subscribe_time"
     t.string   "unionid"
     t.string   "remark"
-    t.integer  "groupid",        default: 0
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.integer  "groupid",            default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "email",              default: "",      null: false
+    t.string   "encrypted_password", default: "",      null: false
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["openid"], name: "index_users_on_openid"
 
 end
