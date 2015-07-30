@@ -14,6 +14,7 @@ gem 'wechat-rails', git:'https://github.com/feitian124/wechat-rails', branch: 'm
 gem 'carrierwave'
 gem 'bower-rails', '~> 0.10.0'
 gem 'bourbon'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
