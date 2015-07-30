@@ -34,7 +34,7 @@ RSpec.describe AlbumsController, type: :controller do
   describe "GET #edit" do
     it "redirect to @album without openid" do
       get :edit, {:id => album.to_param}, valid_session
-      expect(response).to redirect_to(album)
+      expect(response).to redirect_to(root_path)
     end
     it "render album layout with openid" do
       get :edit, {:id => album.to_param, openid: album.user.openid}, valid_session
@@ -81,19 +81,19 @@ RSpec.describe AlbumsController, type: :controller do
       let(:new_attributes) { attributes_for(:album) }
 
       it "updates the requested album" do
-        put :update, {:id => album.to_param, :album => new_attributes}, valid_session
+        put :update, {:id => album.to_param, :album => new_attributes, :openid => album.user.openid}, valid_session
         album.reload
         expect(album.name).to eq(new_attributes[:name])
       end
 
       it "assigns the requested album as @album" do
-        put :update, {:id => album.to_param, :album => valid_attributes}, valid_session
+        put :update, {:id => album.to_param, :album => new_attributes, :openid => album.user.openid}, valid_session
         expect(assigns(:album)).to eq(album)
       end
 
-      it "redirects to the album" do
-        put :update, {:id => album.to_param, :album => valid_attributes}, valid_session
-        expect(response).to redirect_to(album)
+      it "redirects to root path" do
+        put :update, {:id => album.to_param, :album => new_attributes}, valid_session
+        expect(response).to redirect_to(root_path)
       end
     end
 
@@ -114,12 +114,12 @@ RSpec.describe AlbumsController, type: :controller do
     it "destroys the requested album" do
       album
       expect {
-        delete :destroy, {user_id: album.user_id, :id => album.to_param}, valid_session
+        delete :destroy, {user_id: album.user_id, :id => album.to_param, openid: album.user.openid}, valid_session
       }.to change(Album, :count).by(-1)
     end
 
     it "redirects to the albums list" do
-      delete :destroy, {user_id: album.user_id, :id => album.to_param}, valid_session
+      delete :destroy, {user_id: album.user_id, :id => album.to_param, openid: album.user.openid}, valid_session
       expect(response).to redirect_to(user_albums_url(album.user))
     end
   end

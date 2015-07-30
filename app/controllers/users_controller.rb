@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -71,6 +72,6 @@ class UsersController < ApplicationController
     def user_params
       params[:user]
       params.require(:user).permit(:subscribe, :openid, :nickname, :sex, :language, :city, :province,
-                                   :country, :headimgurl, :subscribe_time, :unionid, :remark)
+                                   :country, :headimgurl, :subscribe_time, :unionid, :remark, :email, :password)
     end
 end

@@ -5,6 +5,11 @@ RSpec.describe ImagesController, type: :controller do
   let(:valid_attributes) { attributes_for(:image) }
   let(:invalid_attributes) { valid_attributes.deep_dup }
   let(:valid_session) { {} }
+  let(:user) { create(:user) }
+
+  before(:each) do
+    sign_in user
+  end
 
   describe "GET #index" do
     it "assigns all images as @images" do

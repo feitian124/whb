@@ -7,6 +7,9 @@
     <div class="top-bar-section">
       <ul>
         <li><%= link_to '关于', page_path('about') %></li>
+        <% if user_signed_in? %>
+          <li> <%= link_to '登出', destroy_user_session_path, :method => :delete %> </li>
+        <% end %>
       </ul>
     </div>
   </nav>

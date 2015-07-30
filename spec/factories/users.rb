@@ -3,6 +3,8 @@ FactoryGirl.define do
     subscribe true
     sequence(:openid) { |n| "openid#{n}" }
     sequence(:nickname) { |n| "nickname#{n}" }
+    sequence(:email) { |n| "email#{n}@top.io" }
+    sequence(:password) { |n| "password#{n}" }
     sex { rand 3 }
     language "zh_CN"
     city "city"
