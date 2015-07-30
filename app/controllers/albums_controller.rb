@@ -3,19 +3,16 @@ class AlbumsController < ApplicationController
 
   before_action :set_user, only: [:new, :create, :index]
   before_action :set_album, only: [:show, :edit, :update, :destroy]
+  before_action :permit, only: [:index, :edit, :update, :destroy]
+
   # 覆盖 wechat-rails(wechat_responder引入) 中的检查签名逻辑, 不检查
   skip_before_action :verify_signature, only: [:show, :create]
 
   # GET /albums
   # GET /albums.json
   def index
-    if @user.openid == params[:openid]
-      @albums = @user.albums
-      render layout: "album"
-    else
-      flash[:notice] = "你无权访问上一个页面, 已跳转至主页.."
-      redirect_to root_path
-    end
+    @albums = @user.albums
+    render layout: "album"
   end
 
   # GET /albums/1
@@ -31,12 +28,8 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
-    if @album.user.openid == params[:openid]
-      @songs = Song.all
-      render layout: "album"
-    else
-      redirect_to album_path(@album)
-    end
+    @songs = Song.all
+    render layout: "album"
   end
 
   # POST /albums
@@ -87,6 +80,15 @@ class AlbumsController < ApplicationController
 
     def set_album
       @album = Album.find(params[:id])
+    end
+
+    def permit
+      return true if user_signed_in?
+      owner = @user || @album.user
+      if owner.openid != params[:openid]
+        flash[:notice] = "你无权访问上一个页面, 已跳转至主页.."
+        redirect_to root_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
