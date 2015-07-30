@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resource :wechat, only: [:show, :create]
   resources :songs
 
+  devise_for :users
   resources :users, shallow: true do
     resources :albums
     resources :images
   end
 
-  devise_for :users
 end
