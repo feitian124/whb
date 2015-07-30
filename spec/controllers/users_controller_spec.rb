@@ -6,6 +6,10 @@ RSpec.describe UsersController, type: :controller do
   let(:invalid_attributes) { {openid: user.openid, nickname: nil} }
   let(:valid_session) { {} }
 
+  before(:each) do
+    sign_in user
+  end
+
   describe "GET #index" do
     it "assigns all users as @users" do
       get :index, {}, valid_session
