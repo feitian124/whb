@@ -87,12 +87,12 @@ RSpec.describe AlbumsController, type: :controller do
       end
 
       it "assigns the requested album as @album" do
-        put :update, {:id => album.to_param, :album => valid_attributes, :openid => album.user.openid}, valid_session
+        put :update, {:id => album.to_param, :album => new_attributes, :openid => album.user.openid}, valid_session
         expect(assigns(:album)).to eq(album)
       end
 
-      it "redirects to the album" do
-        put :update, {:id => album.to_param, :album => valid_attributes}, valid_session
+      it "redirects to root path" do
+        put :update, {:id => album.to_param, :album => new_attributes}, valid_session
         expect(response).to redirect_to(root_path)
       end
     end
