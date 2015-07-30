@@ -5,6 +5,11 @@ RSpec.describe SongsController, type: :controller do
   let(:valid_attributes) { attributes_for(:song) }
   let(:invalid_attributes) { valid_attributes.deep_dup }
   let(:valid_session) { {} }
+  let(:user) { create(:user) }
+
+  before(:each) do
+    sign_in user
+  end
 
   describe "GET #index" do
     it "assigns all songs as @songs" do
