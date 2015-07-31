@@ -10,16 +10,16 @@ $(function() {
       link: 'http://www.getxrp.com/albums/1',
       imgUrl: 'http://img3.douban.com/view/movie_poster_cover/spst/public/p2166127561.jpg',
       trigger: function (res) {
-        alert('用户点击分享到朋友圈');
+        //alert('用户点击分享到朋友圈');
       },
       success: function (res) {
-        alert('已分享');
+        //alert('已分享');
       },
       cancel: function (res) {
-        alert('已取消');
+        //alert('已取消');
       },
       fail: function (res) {
-        alert('失败:'+JSON.stringify(res));
+        //alert('失败:'+JSON.stringify(res));
       }
     });
 
@@ -32,14 +32,30 @@ $(function() {
       type: '', // 分享类型,music、video或link，不填默认为link
       dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
       success: function () {
-        // 用户确认分享后执行的回调函数
-        console.log('onMenuShareAppMessage success');
+        //console.log('onMenuShareAppMessage success');
       },
       cancel: function () {
-        // 用户取消分享后执行的回调函数
-        console.log('onMenuShareAppMessage cancel');
+        //console.log('onMenuShareAppMessage cancel');
       }
     });
+
+    // 隐藏不需要的菜单
+    wx.hideMenuItems({
+      menuList: [
+        'menuItem:readMode', // 阅读模式
+        'menuItem:copyUrl', // 复制链接
+        'menuItem:originPage',
+        'menuItem:openWithQQBrowser',
+        'menuItem:openWithSafari'
+      ],
+      success: function (res) {
+        //console.log('hideMenuItems ok');
+      },
+      fail: function (res) {
+        //console.log('hideMenuItems failed:', JSON.stringify(res));
+      }
+    });
+
   });
 
   wx.error(function(res){
@@ -60,7 +76,6 @@ $(function() {
       signature: cfg.attr('data-signature'),// 必填，签名，见附录1
       jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     });
-
   }
 
   $(document).ready(ready);
