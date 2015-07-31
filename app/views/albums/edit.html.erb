@@ -73,5 +73,7 @@
   <h1>您的浏览器不支持 audio 标签。</h1>
 </audio>
 
+<%= hidden_field_tag(:cfg, "0", data:{appid: @appid, timestamp: @cfg[:timestamp], noncestr: @cfg[:noncestr], signature: @cfg[:signature], url: @cfg[:url]}) %>
+
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', user_albums_path(@album.user) %>

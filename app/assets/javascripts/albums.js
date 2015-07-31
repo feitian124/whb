@@ -140,14 +140,13 @@ $(function() {
         //标题保存到数据库中
     });
 
-    <% appid = YAML.load_file("config/wechat.yml")[Rails.env].symbolize_keys[:appid] %>
-    <% cfg = WechatsController.wechat.jsapi_ticket.signature('www.baidu.com') %>
+    var cfg = $('#cfg');
     wx.config({
       debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-      appId: "<%= appid %>", // 必填，公众号的唯一标识
-      timestamp: <%= cfg[:timestamp] %>, // 必填，生成签名的时间戳
-      nonceStr: "<%= cfg[:noncestr] %>", // 必填，生成签名的随机串
-      signature: "<%= cfg[:signature] %>",// 必填，签名，见附录1
+      appId: cfg.attr('data-appid'), // 必填，公众号的唯一标识
+      timestamp: cfg.attr('data-timestamp'), // 必填，生成签名的时间戳
+      nonceStr: cfg.attr('data-noncestr'), // 必填，生成签名的随机串
+      signature: cfg.attr('data-signature'),// 必填，签名，见附录1
       jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     });
 
