@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/feitian124/wechat-rails
-  revision: cf939e95af8068f03e841eca4b9fd7e1c16aaad4
+  revision: 8ba67dc7a33fda6dc9b97a7ca011f8d742f5262c
   branch: ming
   specs:
     wechat-rails (0.1.1)
