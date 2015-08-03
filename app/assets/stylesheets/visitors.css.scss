@@ -22,22 +22,22 @@ h1, h2, h3, h4, a, p {
  */
 
 
-header {
+.banner {
 	background: #333;
 	padding: 60px;
 }
 
-header h1, 
-header h3,
+.banner h1, 
+.banner h3,
 footer h4 {
 	color: white;
 }
 
-header h1 {
+.banner h1 {
 	font-weight: 700;
 }
 
-header h3, 
+.banner h3, 
 footer h4 {
 	font-weight: 400;
 }
@@ -156,8 +156,8 @@ footer h4 {
 	border-bottom: 1px solid dimgray;
 }
 
-footer p, 
-footer a p, 
+footer p,
+footer a p,
 footer i {
 	color: #a2a2a2;
 }
@@ -180,7 +180,7 @@ footer a:hover i {
 
 @media only screen and (min-width: 40.063em) {
 
-	header {
+	.banner {
 		padding-bottom: 130px;
 	}
 
