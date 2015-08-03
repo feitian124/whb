@@ -1,0 +1,195 @@
+h1, h2, h3, h4, a, p {
+	color: black;
+}
+
+
+/**
+ * HEADER styles
+ *
+ */
+
+
+.banner {
+	background: #333;
+	padding: 60px;
+}
+
+.banner h1, 
+.banner h3,
+footer h4 {
+	color: white;
+}
+
+.banner h1 {
+	font-weight: 700;
+}
+
+.banner h3, 
+footer h4 {
+	font-weight: 400;
+}
+
+
+/**
+ * SERVICES styles
+ *
+ */
+
+
+.services .row {
+	background: #a8a064;
+	border: 1px solid #8b844e;
+}
+
+.services .services-info {
+	margin: 0 0 30px;
+	padding: 10px;
+	border: 1px solid #9b9357;
+	border-radius: 3px;
+}
+
+.services i {
+	color: #5a5533;
+}
+
+.services a {
+	padding: 3px;
+	border-bottom: 1px dashed #222;
+}
+
+
+/**
+ * ABOUT styles
+ *
+ */
+
+
+.about .row:first-child {
+	margin-top: 30px;
+	border-bottom: 1px solid #c4be95;
+	padding: 10px;
+}
+
+.about h3, 
+.about a {
+	margin: 10px 0;
+}
+
+.about a {
+	display: block;
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.about .row:last-child {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.about .row:last-child p {
+	font-size: 1.3em;
+	margin: 0;
+	padding: 0px 5px 5px;
+	font-weight: 300;
+}
+
+
+/**
+ * ART styles
+ *
+ */
+
+
+.art .full-width {
+	max-width: 100%;
+}
+
+.art {
+	border-top: 1px solid #c4be95;
+	border-bottom: 2px solid #222;
+}
+ 
+.art .no-padding {
+	padding: 0;
+}
+
+.art a {
+	margin: 0;
+}
+
+.art h3 {
+	margin: 20px 0;
+}
+
+
+/**
+ * FOOTER styles
+ *
+ */
+
+
+footer {
+	padding: 15px 0;
+	color: white;
+	background: #2f2f2f;
+}
+
+footer p {
+	font-weight: 300;
+}
+
+footer h4 {
+	border-bottom: 1px solid dimgray;
+}
+
+footer p,
+footer a p,
+footer i {
+	color: #a2a2a2;
+}
+
+footer a p {
+	margin: 0 0 3px 0;
+}
+
+footer a:hover p, 
+footer a:hover i {
+	color: white;
+}
+
+
+/**
+ * MEDIA QUERIES styles
+ *
+ */
+
+
+@media only screen and (min-width: 40.063em) {
+
+	.banner {
+		padding-bottom: 130px;
+	}
+
+	.services .row {
+		margin-top: -70px;
+	}
+  
+	.about a {
+		width: 100%;
+	}
+
+	footer p {
+		margin: 0;
+	}
+    
+}
+
+
+@media only screen and (min-width: 64.063em) {
+
+  .services .services-info {
+    margin: 30px 0;
+  }
+  
+}

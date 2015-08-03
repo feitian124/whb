@@ -1527,6 +1527,7 @@ $include-html-global-classes: $include-html-classes;
 main {
   @include twelve-columns;
   background-color: #eee;
+  padding: 0rem;
   }
 section {
   @extend .row;
