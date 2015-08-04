@@ -15,6 +15,7 @@ gem 'carrierwave'
 gem 'bower-rails', '~> 0.10.0'
 gem 'bourbon'
 gem 'devise'
+gem 'font-awesome-sass', '~> 4.3.0'
 
 group :development, :test do
   gem 'byebug'

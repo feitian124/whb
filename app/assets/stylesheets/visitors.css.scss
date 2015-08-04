@@ -10,11 +10,11 @@ h1, h2, h3, h4, a, p {
 
 
 .banner {
-	background: #333;
+	background: image-url('banner-bg.png');
 	padding: 60px;
 }
 
-.banner h1, 
+.banner h1,
 .banner h3,
 footer h4 {
 	color: white;
@@ -37,7 +37,7 @@ footer h4 {
 
 
 .services .row {
-	background: #a8a064;
+	background: image-url('market-bg.png');
 	border: 1px solid #8b844e;
 }
 
