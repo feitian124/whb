@@ -5,7 +5,6 @@
     <title><%= content_for?(:title) ? yield(:title) : "微海报" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "有声有色微海报, 开启信息分享新篇章" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <%# Modernizr is required for Zurb Foundation %>
     <%= javascript_include_tag 'vendor/modernizr' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
