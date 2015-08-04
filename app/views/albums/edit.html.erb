@@ -20,7 +20,7 @@
     <a id="pics" href="#" class="btn" data-title="管理相册">相册</a>
   </div>
   <div class="menu">
-    <a id="title" href="#" class="btn" data-title="修改标题">标题</a>
+    <a id="title" href="#" class="btn" data-title="修改标题">发布</a>
   </div>
 </div>
 
@@ -31,7 +31,7 @@
   </div>
   <div class="listWrapper">
     <div class="tpl hide">
-      <h2>模板</h2>
+      <h3>暂时不支持更换模板, 功能开发中, 请下次再来, 谢谢.</h3>
     </div>
     <div class="music hide">
       <% @songs.each_with_index do |song, i| %>
@@ -59,9 +59,8 @@
     </div>
     <div class="title hide">
       <span class="title-lead">给您的微海报写个标题吧</span>
-      <span class="title-default hide">某某某的微海报，很漂亮吧</span>
-      <textarea class="title-content" area-invalid="false">某某某的微海报，很漂亮吧</textarea>
-      <button type="submit" class="modify-title small">写好标题了</button>
+      <textarea class="title-content" area-invalid="false"><%= @album.user.nickname %>的微海报</textarea>
+      <button type="submit" class="publish small">写好标题了, 发布</button>
     </div>
   </div>
 </div>
