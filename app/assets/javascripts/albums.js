@@ -134,11 +134,6 @@ $(function() {
         });
       }
     });
-
-    $(".publish").on('click',function(){
-        alert($(".title-content").val());
-        //标题保存到数据库中
-    });
   }
 
   $(document).ready(ready);
