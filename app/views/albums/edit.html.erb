@@ -62,6 +62,7 @@
         <span class="title-lead">给您的微海报写个标题吧</span>
         <%= f.text_area :name, value: "我的微海报", class: "title-content" %>
         <%= f.hidden_field :status, value: "published" %>
+        <input type="hidden" id="openid" name="openid" value="<%= @album.user.openid %>">
         <button type="submit" class="publish small">写好标题了, 发布</button>
       <% end %>
     </div>

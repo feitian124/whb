@@ -102,13 +102,15 @@ $(function() {
       var albumId = $("#albumId").val();
       var songId = $(this).parents(".row").attr("data-song-id");
       var songSrc = $(this).parents(".row").attr("data-song-src");
+      var openid = $("#openid").val();
       $.ajax({
         type: 'put',
         url: '/albums/' + albumId,
         data: {
           album: {
             song_id: songId
-          }
+          },
+          openid: openid
         },
         dataType : 'json',
         success : function(data) {
@@ -123,10 +125,14 @@ $(function() {
       e.stopPropagation();
       var imgId = $(this).siblings("img").attr("data-id");
       var _this = this;
+      var openid = $("#openid").val();
       if(confirm("确认删除这张照片吗？")) {
         $.ajax({
           type: 'delete',
           url: '/images/' + imgId,
+          data: {
+            openid: openid
+          },
           dataType : 'json',
           success : function(data) {
             $(_this).parent().hide();

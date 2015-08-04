@@ -28,11 +28,14 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
-    redirect_to @album if @album.published?
-    @appid = YAML.load_file("config/wechat.yml")[Rails.env].symbolize_keys[:appid]
-    @cfg = AlbumsController.wechat.jsapi_ticket.signature(request.original_url)
-    @songs = Song.all
-    render layout: "album"
+    if @album.published?
+      redirect_to @album
+    else
+      @appid = YAML.load_file("config/wechat.yml")[Rails.env].symbolize_keys[:appid]
+      @cfg = AlbumsController.wechat.jsapi_ticket.signature(request.original_url)
+      @songs = Song.all
+      render layout: "album"
+    end
   end
 
   # POST /albums
