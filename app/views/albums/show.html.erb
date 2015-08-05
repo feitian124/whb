@@ -4,8 +4,7 @@
     <div class="section"><img src="<%= src %>"></div>
   <% end %>
   <div class="section">
-    <h1><%= link_to 'Edit', edit_album_path(@album) %></h1> |
-      <h1><%= link_to 'Back', user_albums_path(@album.user) %></h1>
+    <h1><%= link_to '返回', user_albums_path(@album.user) %></h1>
   </div>
 </div>
 
@@ -14,4 +13,7 @@
 </div>
 
 
-
+<div class="music-icon play" id="music-icon"></div>
+<audio id="audio" src="<%= @album.song.src %>" autoplay="autoplay" loop="loop">
+  <h1>您的浏览器不支持 audio 标签。</h1>
+</audio>
