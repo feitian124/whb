@@ -31,6 +31,7 @@ db/*.sqlite3
 /config/config.yml
 /config/database.yml
 /config/wechat.yml
+/config/initializers/carrierwave.rb
 /coverage.data
 /coverage/
 /db/*.javadb/
