@@ -80,3 +80,4 @@ uploads
 # Environment files that may contain sensitive data
 .env
 .powenv
+public/musics
