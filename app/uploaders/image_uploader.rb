@@ -14,7 +14,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     date = model.created_at.strftime('%Y%m%d')
-    "uploads/#{date}"
+    "uploads/#{model.class.to_s.underscore}/#{date}/#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
