@@ -32,8 +32,7 @@
       <ul class="small-block-grid-3">
         <% @album.images.each do |image| %>
           <li>
-            <% src =  image.src.blank? ? image.pic_url : image.src %>
-            <img src="<%= src %>">
+            <img src="<%= image.url %>">
           </li>
         <% end %>
       </ul>

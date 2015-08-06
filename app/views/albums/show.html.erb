@@ -1,7 +1,6 @@
 <div id="fullpage" class="text-center">
   <% @album.images.each do |image| %>
-    <% src =  image.src.blank? ? image.pic_url : image.src %>
-    <div class="section"><img src="<%= src %>"></div>
+    <div class="section"><img src="<%= image.url %>"></div>
   <% end %>
   <div class="section">
     <h1><%= link_to '返回', user_albums_path(@album.user) %></h1>
