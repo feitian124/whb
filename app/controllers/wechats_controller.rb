@@ -29,10 +29,10 @@ class WechatsController < ApplicationController
     old = User.find_by_openid request[:FromUserName]
     if old
       old.update!(user_json)
-      request.reply.text "欢迎再次关注~"
+      request.reply.text "世界那么大,我就知道你会再回来的,欢迎再次关注,以后就别走了啊!~"
     else
       User.create!(user_json)
-      request.reply.text "欢迎关注~"
+      request.reply.text "世界那么大,你我在这里遇见!欢迎关注微海报,上传照片即可轻松制作你的个人音乐微海报!"
     end
   end
 
@@ -85,7 +85,6 @@ class WechatsController < ApplicationController
   on :location do |request|
     request.reply.text("#{request[:Location_X]}, #{request[:Location_Y]}") #回复地理位置
   end
-
 
   # 当无任何responder处理用户信息时,使用这个responder处理
   on :fallback do |request|

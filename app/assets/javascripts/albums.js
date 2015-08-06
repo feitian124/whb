@@ -46,6 +46,23 @@ $(function() {
     }
   }
 
+  var showMusicCategory = function(category) {
+      if ( category == 'love') {
+        $('.music .music-category').addClass('hide');
+        $('.music .music-category-love').removeClass('hide');
+      } else if(category == 'fashion') {
+        $('.music .music-category').addClass('hide');
+        $('.music .music-category-fashion').removeClass('hide');
+      } else if(category == 'pure') {
+        $('.music .music-category').addClass('hide');
+        $('.music .music-category-pure').removeClass('hide');
+      } else {
+        $('.music .music-category').addClass('hide');
+        $('.music .music-category-all').removeClass('hide');
+      }
+  }
+
+
   /**
    * 当有 row 参数时, 试听歌曲 row 行的歌曲
    * 当没有 row 参数时, 停止当前试听
@@ -92,12 +109,32 @@ $(function() {
       toggleMusic();
     });
 
-    $(".listWrapper > .music > .row").on('click', function(e){
+    $(".listWrapper .music .music-all").on('click', function(e){
+      e.stopPropagation();
+      showMusicCategory('all');
+    });
+
+    $(".listWrapper .music .music-love").on('click', function(e){
+      e.stopPropagation();
+      showMusicCategory('love');
+    });
+
+    $(".listWrapper .music .music-fashion").on('click', function(e){
+      e.stopPropagation();
+      showMusicCategory('fashion');
+    });
+
+    $(".listWrapper .music .music-pure").on('click', function(e){
+      e.stopPropagation();
+      showMusicCategory('pure');
+    });
+
+    $(".listWrapper .music .row").on('click', function(e){
       e.stopPropagation();
       toggleListen($(this));
     });
 
-    $(".listWrapper > .music .pick").on('click', function(e){
+    $(".listWrapper .music .pick").on('click', function(e){
       e.stopPropagation();
       var albumId = $("#albumId").val();
       var songId = $(this).parents(".row").attr("data-song-id");
