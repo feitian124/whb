@@ -2,6 +2,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require fullpage.js/jquery.fullPage.js
+//= require jweixin
+//= require soundjs
+//= require jssdk
 //= require_self
 
 $(function() {
