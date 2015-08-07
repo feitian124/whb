@@ -182,7 +182,7 @@ qq_songs = [{
   name: '吉他卡农',
   category: '纯音乐',
   desc: '',
-  src: '/musics/吉他卡农.m4a',
+  src: '/musics/吉他卡农.mp3',
   singer: '押尾コータロー',
   collection: '史上最优美的轻音乐',
   duration: ''
