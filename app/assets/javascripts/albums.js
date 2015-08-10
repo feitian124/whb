@@ -50,9 +50,9 @@ $(function() {
   }
 
   var showMusicCategory = function(category) {
-      if ( category == 'love') {
+      if ( category == 'english') {
         $('.music .music-category').addClass('hide');
-        $('.music .music-category-love').removeClass('hide');
+        $('.music .music-category-english').removeClass('hide');
       } else if(category == 'fashion') {
         $('.music .music-category').addClass('hide');
         $('.music .music-category-fashion').removeClass('hide');
@@ -117,9 +117,9 @@ $(function() {
       showMusicCategory('all');
     });
 
-    $(".listWrapper .music .music-love").on('click', function(e){
+    $(".listWrapper .music .music-english").on('click', function(e){
       e.stopPropagation();
-      showMusicCategory('love');
+      showMusicCategory('english');
     });
 
     $(".listWrapper .music .music-fashion").on('click', function(e){
