@@ -175,7 +175,7 @@ $(function() {
           },
           dataType : 'json',
           success : function(data) {
-            $(_this).parent().hide();
+            $(_this).parents('li').remove();
           }
         });
       }
