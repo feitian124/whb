@@ -19,16 +19,11 @@ RSpec.describe WechatsController, type: :controller do
   let(:txt_message){message_base.merge(:MsgType => "text", :Content => "txt message content")}
   let(:image_message){message_base.merge(:MsgType => "image", :MediaId => "1234567890", :PicUrl => "http://localhost:3000/1.jpg")}
   let(:my_haibao_message){message_base.merge(:MsgType => "event", :Event => "CLICK", :EventKey => "MY_HAIBAO")}
+  let(:subscribe_message){message_base.merge(:MsgType => "event", :Event => "subscribe")}
 
   it "verify server url is valid" do
     get :show, signature_params.merge(echostr:"hello")
     expect(response.body).to eq("hello")
-  end
-
-  it "on text" do
-    post :create, {:xml => txt_message}.merge(signature_params), valid_session
-    expect(response.status).to eq(200)
-    #expect(response.content_type).to eq('text/xml')
   end
 
   it "on image" do
@@ -37,10 +32,22 @@ RSpec.describe WechatsController, type: :controller do
    # }.to change(Image, :count).by(1)
   end
 
+  it "on subscribe" do
+    subscribe_message[:FromUserName] = 'o3l6gs_DLc1sHiCkr_pnnEO0zF64'
+    post :create, {:xml => subscribe_message}.merge(signature_params), valid_session
+    expect(response.status).to eq(200)
+  end
+
   it "on MY_HAIBAO" do
     expect {
       # 因为 openid 不对, 所以肯定异常
       post :create, {:xml => my_haibao_message}.merge(signature_params), valid_session
     }.to raise_error(Wechat::ResponseError)
+  end
+
+  it "on text" do
+    post :create, {:xml => txt_message}.merge(signature_params), valid_session
+    expect(response.status).to eq(200)
+    #expect(response.content_type).to eq('text/xml')
   end
 end

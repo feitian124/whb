@@ -31,6 +31,8 @@ class WechatsController < ApplicationController
       old.update!(user_json)
       request.reply.text "世界那么大,我就知道你会再回来的,欢迎再次关注,以后就别走了啊!~"
     else
+      openid = user_json["openid"]
+      user_json.merge!({"email" => "#{openid}@whb.com", "password" => "#{openid}"})
       User.create!(user_json)
       request.reply.text "世界那么大,你我在这里遇见!欢迎关注微海报,上传照片即可轻松制作你的个人音乐微海报!"
     end
@@ -46,6 +48,8 @@ class WechatsController < ApplicationController
     user = User.find_by_openid request[:FromUserName]
     if user.nil?
       user_json = wechat.user request[:FromUserName]
+      openid = user_json["openid"]
+      user_json.merge!({"email" => "#{openid}@whb.com", "password" => "#{openid}"})
       user = User.create!(user_json)
     end
     request.reply.news(0...1) do |article, i|
