@@ -27,3 +27,17 @@
     </li>
   <% end %>
 </ul>
+
+<% if @albums.length == 0 %>
+<div style="text-align:center">
+  <h3 style="color:red">你还没有微海报~</h3>
+  <p>有声有色微海报, 好听好看悦分享</p>
+  <% cover = "http://#{WECHAT_CONFIG[:domain]}/images/albums_cover.jpg" %>
+  <img src="<%= cover %>"/>
+  <p>
+  炫酷的动画效果，好听的音乐， 配上你精心拍好的照片, 微海报是全新的分享方式.
+  关注微海报, 微信直接上传图片制作, 简单几步就可以做出漂亮的海报！全部免费！快来开始吧~
+  </p>
+  <a href="/pages/faq" class="button tiny radius alert">常见问题</a>
+</div>
+<% end %>
