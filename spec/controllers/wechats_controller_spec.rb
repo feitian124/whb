@@ -18,6 +18,7 @@ RSpec.describe WechatsController, type: :controller do
   end
   let(:txt_message){message_base.merge(:MsgType => "text", :Content => "txt message content")}
   let(:image_message){message_base.merge(:MsgType => "image", :MediaId => "1234567890", :PicUrl => "http://localhost:3000/1.jpg")}
+  let(:my_haibao_message){message_base.merge(:MsgType => "event", :Event => "CLICK", :EventKey => "MY_HAIBAO")}
 
   it "verify server url is valid" do
     get :show, signature_params.merge(echostr:"hello")
@@ -34,5 +35,12 @@ RSpec.describe WechatsController, type: :controller do
    # expect {
    #   post :create, {:xml => image_message}, valid_session
    # }.to change(Image, :count).by(1)
+  end
+
+  it "on MY_HAIBAO" do
+    expect {
+      # 因为 openid 不对, 所以肯定异常
+      post :create, {:xml => my_haibao_message}.merge(signature_params), valid_session
+    }.to raise_error(Wechat::ResponseError)
   end
 end
