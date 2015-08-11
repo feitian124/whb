@@ -44,11 +44,15 @@ class WechatsController < ApplicationController
   # 查看我的海报
   on :event, with: "MY_HAIBAO" do |request|
     user = User.find_by_openid request[:FromUserName]
+    if user.nil?
+      user_json = wechat.user request[:FromUserName]
+      user = User.create!(user_json)
+    end
     request.reply.news(0...1) do |article, i|
       article.item title: "我的微海报",
-                   description: "你共有#{user.albums.length}条微海报, 点击查看吧~",
-                   pic_url: "http://#{WECHAT_CONFIG[:domain]}/assets/albums_cover.jpg",
-                   url: "http://#{WECHAT_CONFIG[:domain]}/users/#{user.id}/albums?openid=#{user.openid}"
+                  description: "你共有#{user.albums.length}条微海报, 点击查看吧~",
+                  pic_url: "http://#{WECHAT_CONFIG[:domain]}/assets/albums_cover.jpg",
+                  url: "http://#{WECHAT_CONFIG[:domain]}/users/#{user.id}/albums?openid=#{user.openid}"
     end
   end
 
