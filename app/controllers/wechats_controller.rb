@@ -98,4 +98,11 @@ class WechatsController < ApplicationController
   on :fallback do |request|
     request.reply.text "fallback"
   end
+
+  def redirect
+    code = params[:code]
+    state = params[:state]
+    web_access_token = WechatsController.wechat.web_access_token code
+    render plain: web_access_token.inspect
+  end
 end

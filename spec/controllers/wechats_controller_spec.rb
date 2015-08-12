@@ -50,4 +50,9 @@ RSpec.describe WechatsController, type: :controller do
     expect(response.status).to eq(200)
     #expect(response.content_type).to eq('text/xml')
   end
+
+  it "#redirect" do
+    get :redirect, {code: 'code', state: 'state'}
+    expect(response.status).to eq(200)
+  end
 end
