@@ -103,7 +103,9 @@ class WechatsController < ApplicationController
     code = params[:code]
     state = params[:state]
     web_access_token = WechatsController.wechat.web_access_token code
-    user = User.find_by_openid web_access_token['openid']
-    redirect_to user_albums_path(user, openid: user.openid)
+    @user = User.find_by_openid web_access_token['openid']
+    @albums = @user.albums
+    render "albums/index"
+    #redirect_to user_albums_path(user, openid: user.openid)
   end
 end
