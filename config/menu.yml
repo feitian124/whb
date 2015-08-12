@@ -25,3 +25,8 @@ button:
         type: "view"
         name: "关于我们"
         url: 'http://mp.weixinmomo.com/pages/about'
+      -
+        type: "view"
+        name: "网页授权获取用户基本信息"
+        # 需修改回调网址
+        url: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb4d6379ea2e8b4b5&redirect_uri=http%3a%2f%2fwww.getxrp.com%2fwechat&response_type=code&scope=snsapi_base&state=123#wechat_redirect'
