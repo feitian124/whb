@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/feitian124/wechat-rails
-  revision: 6234291280f9e50b4a1f579d759c159687d573b1
+  revision: 38dd70b13e43a8ec087b93c7303ddc73b12ebf1c
   branch: ming
   specs:
     wechat-rails (0.1.1)
@@ -161,7 +161,7 @@ GEM
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
-    minitest (5.7.0)
+    minitest (5.8.0)
     multi_json (1.11.2)
     nenv (0.2.0)
     netrc (0.10.3)
@@ -337,4 +337,4 @@ DEPENDENCIES
   wechat-rails!
 
 BUNDLED WITH
-   1.10.5
+   1.10.6

@@ -44,21 +44,21 @@ class WechatsController < ApplicationController
   end
 
   # 查看我的海报
-  on :event, with: "MY_HAIBAO" do |request|
-    user = User.find_by_openid request[:FromUserName]
-    if user.nil?
-      user_json = wechat.user request[:FromUserName]
-      openid = user_json["openid"]
-      user_json.merge!({"email" => "#{openid}@whb.com", "password" => "#{openid}"})
-      user = User.create!(user_json)
-    end
-    request.reply.news(0...1) do |article, i|
-      article.item title: "我的微海报",
-                  description: "你共有#{user.albums.length}条微海报, 点击查看吧~",
-                  pic_url: "http://#{WECHAT_CONFIG[:domain]}/images/albums_cover.jpg",
-                  url: "http://#{WECHAT_CONFIG[:domain]}/users/#{user.id}/albums?openid=#{user.openid}"
-    end
-  end
+  #on :event, with: "MY_HAIBAO" do |request|
+  #  user = User.find_by_openid request[:FromUserName]
+  #  if user.nil?
+  #    user_json = wechat.user request[:FromUserName]
+  #    openid = user_json["openid"]
+  #    user_json.merge!({"email" => "#{openid}@whb.com", "password" => "#{openid}"})
+  #    user = User.create!(user_json)
+  #  end
+  #  request.reply.news(0...1) do |article, i|
+  #    article.item title: "我的微海报",
+  #                description: "你共有#{user.albums.length}条微海报, 点击查看吧~",
+  #                pic_url: "http://#{WECHAT_CONFIG[:domain]}/images/albums_cover.jpg",
+  #                url: "http://#{WECHAT_CONFIG[:domain]}/users/#{user.id}/albums?openid=#{user.openid}"
+  #  end
+  #end
 
   # 默认的文字信息responder
   on :text do |request, content|
@@ -97,5 +97,14 @@ class WechatsController < ApplicationController
   # 当无任何responder处理用户信息时,使用这个responder处理
   on :fallback do |request|
     request.reply.text "fallback"
+  end
+
+  def redirect
+    code = params[:code]
+    state = params[:state]
+    web_access_token = WechatsController.wechat.web_access_token code
+    @user = User.find_by_openid web_access_token['openid']
+    @albums = @user.albums
+    render "albums/index"
   end
 end
