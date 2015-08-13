@@ -362,14 +362,6 @@ qq_songs = [{
   singer: '',
   collection: '',
   duration: ''
-}, {
-  name: '卡农 吉他',
-  category: '纯音乐',
-  desc: '',
-  src: '/musics/pure/卡农吉他.mp3',
-  singer: '',
-  collection: '',
-  duration: ''
 }]
 
 songs = []
