@@ -34,7 +34,7 @@ $menus-z-index: 10;
   &.arrow-wrapper {
     z-index: $menus-z-index - 1;
     position: fixed;
-    bottom: 4%;
+    bottom: 6%;
     left: 50%;
     width: $height;
     height: $height;
@@ -59,7 +59,7 @@ $menus-z-index: 10;
 }
 
 .select-layer{
-  position: fixed;
+  position: absolute;
   z-index: 999;
   bottom: 0;
   width: 100%;
@@ -301,9 +301,6 @@ $menus-z-index: 10;
   }
 
 }
-  
-
-
 
 /* 时间轴上的圆圈 */
 .my-album > li .time-circle {
@@ -327,4 +324,27 @@ $menus-z-index: 10;
     top: 24px;
     left: 22%;
   }
+}
+
+.suscribe{
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  position: fixed;
+  bottom: 1%;
+  left: 50%;
+  margin-left: -50px;
+  font-size: 1.0rem;
+  background-color: rgb(0, 200, 0);
+  color: white;
+  box-shadow: 0 0 5px white;
+  border-radius: 5px;
+  a{
+    color: white;
+  }
+  a:visited{
+    color: white;
+  }
+
 }
