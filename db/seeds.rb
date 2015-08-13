@@ -22,7 +22,7 @@ qq_songs = [{
   name: '绅士',
   category: '流行',
   desc: '',
-  src: '/musics//fashion/绅士.m4a',
+  src: '/musics/fashion/绅士.m4a',
   singer: '薛之谦',
   collection: '绅士',
   duration: ''
@@ -126,7 +126,7 @@ qq_songs = [{
   name: '样(YOUNG)',
   category: '流行',
   desc: '',
-  src: '/musics/fashion/样(YOUNG).mp3',
+  src: '/musics/fashion/样(Young).mp3',
   singer: 'TFBOYS',
   collection: '',
   duration: ''
@@ -158,7 +158,7 @@ qq_songs = [{
   name: '爱的世界只有你',
   category: '流行',
   desc: '',
-  src: '/musics/fashion/爱的世界只有你',
+  src: '/musics/fashion/爱的世界只有你.mp3',
   singer: '祁隆',
   collection: '',
   duration: ''
@@ -174,7 +174,7 @@ qq_songs = [{
   name: '吉他卡农',
   category: '纯音乐',
   desc: '',
-  src: '/musics/pure/吉他卡农.mp3',
+  src: '/musics/pure/卡农吉他.mp3',
   singer: '押尾コータロー',
   collection: '史上最优美的轻音乐',
   duration: ''
@@ -211,10 +211,10 @@ qq_songs = [{
   collection: '',
   duration: ''
 }, {
-  name: 'See you again',
+  name: 'see you again',
   category: '英文',
   desc: '',
-  src: '/musics/english/See_you_again.m4a',
+  src: '/musics/english/see_you_again.m4a',
   singer: 'Wiz Khalifa',
   collection: '',
   duration: ''
