@@ -2,9 +2,6 @@
   <% @album.images.each do |image| %>
     <div class="section"><img src="<%= image.url %>"></div>
   <% end %>
-  <div class="section">
-    <h1><%= link_to '返回', user_albums_path(@album.user) %></h1>
-  </div>
 </div>
 
 <div class="album arrow-wrapper animated fadeOutUp">
