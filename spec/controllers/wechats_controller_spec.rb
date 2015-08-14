@@ -48,11 +48,12 @@ RSpec.describe WechatsController, type: :controller do
   it "on text" do
     post :create, {:xml => txt_message}.merge(signature_params), valid_session
     expect(response.status).to eq(200)
-    #expect(response.content_type).to eq('text/xml')
   end
 
   it "#redirect" do
-    get :redirect, {code: 'code', state: 'state'}
-    expect(response.status).to eq(200)
+    # 因为需要先获得用户同意授权的 code, 这里 code 不对肯定异常
+    expect {
+      get :redirect, {code: 'code', state: 'state'}
+    }.to raise_error(Wechat::ResponseError)
   end
 end
