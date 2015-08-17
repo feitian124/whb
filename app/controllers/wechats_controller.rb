@@ -13,6 +13,7 @@ class WechatsController < ApplicationController
         msg_id: request[:MsgId],
         pic_url: request[:PicUrl]
       })
+      GetImageJob.perform_later img
       count = user.latest_album.images.length
       msg = %Q{收到 #{count} 张照片, 你可以继续上传, 或者<a href="http://#{WECHAT_CONFIG[:domain]}/albums/#{user.latest_album.id}/edit?openid=#{user.openid}">点击这里下一步制作</a>}
       request.reply.text msg
