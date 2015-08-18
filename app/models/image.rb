@@ -8,7 +8,7 @@ class Image < ActiveRecord::Base
 
   Qiniu.establish_connection! :access_key => ImageUploader.qiniu_access_key,
                               :secret_key => ImageUploader.qiniu_secret_key
-  @@put_policy = Qiniu::Auth::PutPolicy.new('ming')
+  @@put_policy = Qiniu::Auth::PutPolicy.new(ImageUploader.qiniu_bucket)
   @@uptoken = Qiniu::Auth.generate_uptoken(@@put_policy)
 
   def upload
@@ -28,6 +28,7 @@ class Image < ActiveRecord::Base
       if "200" == code.to_s
         self.src = uri
         self.save!
+        File.delete(tmp_file)
       else
         raise "Image upload failed: #{code}, #{result}, #{response_headers}"
       end
