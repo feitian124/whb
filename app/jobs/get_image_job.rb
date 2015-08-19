@@ -1,9 +1,9 @@
 class GetImageJob < ActiveJob::Base
-  queue_as :imagejobs
+  queue_as :default
 
   def perform(img)
     logger.info "========================================"
-    logger.info "in imagejobs: #{img.inspect}"
+    logger.info "in default jobs: #{img.inspect}"
     img.upload
   end
 end
