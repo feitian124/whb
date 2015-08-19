@@ -33,6 +33,8 @@ class Image < ActiveRecord::Base
         raise "Image upload failed: #{code}, #{result}, #{response_headers}"
       end
     rescue => error
+      logger.error "error:#{error.class}, #{error.message}"
+      logger.error "error:#{error.backtrace}"
       # 可能 token 到期
       if "401" == code.to_s
         @@uptoken = Qiniu::Auth.generate_uptoken(@@put_policy)
