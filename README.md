@@ -8,6 +8,16 @@ This application requires:
 
 Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
 
+### 运行
+* bundle install
+* rake db:migrate
+* rake bower:install
+* rake assets:precompile
+* export env
+* sudo service nginx restart
+* run redis
+* run sidekiq
+
 ### 微信接入
 
 - 验证服务器的有效性. 填写的服务器地址 `url` 应该为 `your_domain/wechat`.
