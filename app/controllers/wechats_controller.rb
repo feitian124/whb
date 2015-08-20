@@ -5,14 +5,13 @@ class WechatsController < ApplicationController
   # 以后"下载文件"可能需要放到后台任务, 防止阻塞?
   on :image do |request|
     begin
-      tmp_file = wechat.media request[:MediaId]
       user = User.find_by(openid: request[:FromUserName])
       img = user.latest_album.images.create({
-        src: tmp_file,
         media_id: request[:MediaId],
         msg_id: request[:MsgId],
         pic_url: request[:PicUrl]
       })
+      GetImageJob.perform_later img
       count = user.latest_album.images.length
       msg = %Q{收到 #{count} 张照片, 你可以继续上传, 或者<a href="http://#{WECHAT_CONFIG[:domain]}/albums/#{user.latest_album.id}/edit?openid=#{user.openid}">点击这里下一步制作</a>}
       request.reply.text msg
