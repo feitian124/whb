@@ -4,11 +4,9 @@ class Image < ActiveRecord::Base
   belongs_to :album
   has_one :user, :through => :album
 
-  #mount_uploader :src, ImageUploader
-
-  Qiniu.establish_connection! :access_key => ImageUploader.qiniu_access_key,
-                              :secret_key => ImageUploader.qiniu_secret_key
-  @@put_policy = Qiniu::Auth::PutPolicy.new(ImageUploader.qiniu_bucket)
+  Qiniu.establish_connection! :access_key => WECHAT_CONFIG[:qiniu_access_key],
+                              :secret_key => WECHAT_CONFIG[:qiniu_secret_key]
+  @@put_policy = Qiniu::Auth::PutPolicy.new(WECHAT_CONFIG[:qiniu_bucket])
   @@uptoken = Qiniu::Auth.generate_uptoken(@@put_policy)
 
   def upload
@@ -46,9 +44,7 @@ class Image < ActiveRecord::Base
 
   def url
     if src.is_a? String
-      "http://#{ImageUploader.qiniu_bucket_domain}/#{src}"
-    elsif src.is_a? ImageUploader
-      src.url
+      "http://#{WECHAT_CONFIG[:qiniu_bucket_domain]}/#{src}"
     elsif src.blank?
       pic_url
     else

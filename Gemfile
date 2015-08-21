@@ -11,12 +11,12 @@ gem 'jbuilder', '~> 2.0'
 gem 'foundation-rails'
 gem 'high_voltage'
 gem 'wechat-rails', git:'https://github.com/feitian124/wechat-rails', branch: 'ming'
-gem 'carrierwave'
 gem 'bower-rails', '~> 0.10.0'
 gem 'bourbon'
 gem 'devise'
 gem 'font-awesome-sass', '~> 4.3.0'
 gem 'sidekiq'
+gem 'qiniu', '~> 6.5.0'
 
 group :development, :test do
   gem 'byebug'

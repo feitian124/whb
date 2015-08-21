@@ -6,6 +6,6 @@ class Song < ActiveRecord::Base
   # http://7xkwcm.com1.z0.glb.clouddn.com/musics/see_you_again.m4a
   def src
     original = super
-    "http://#{SongUploader.qiniu_bucket_domain}#{original}"
+    "http://#{WECHAT_CONFIG[:qiniu_bucket_domain]}#{original}"
   end
 end
