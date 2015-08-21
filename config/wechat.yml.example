@@ -6,6 +6,10 @@ default: &default
   access_token: '/var/tmp/wechat_access_token'
   jsapi_ticket: '/var/tmp/wechat_jsapi_ticket'
   domain: 'www.getxrp.com'
+  qiniu_access_key: <%= ENV['QINIU_SECRET_KEY'] %>
+  qiniu_secret_key: <%= ENV['QINIU_SECRET_KEY'] %>
+  qiniu_bucket: <%= ENV['QINIU_BUCKET'] %>
+  qiniu_bucket_domain: <%= ENV['QINIU_BUCKET_DOMAIN'] %>
 
 production:
   appid: <%= ENV['WECHAT_APPID'] %>
@@ -13,6 +17,10 @@ production:
   token: <%= ENV['WECHAT_TOKEN'] %>
   access_token: <%= ENV['WECHAT_ACCESS_TOKEN'] %>
   jsapi_ticket: <%= ENV['WECHAT_JSAPI_TICKET'] %>
+  qiniu_access_key: <%= ENV['QINIU_SECRET_KEY'] %>
+  qiniu_secret_key: <%= ENV['QINIU_SECRET_KEY'] %>
+  qiniu_bucket: <%= ENV['QINIU_BUCKET'] %>
+  qiniu_bucket_domain: <%= ENV['QINIU_BUCKET_DOMAIN'] %>
 
 staging:
   <<: *default
