@@ -15,10 +15,10 @@ class WechatsController < ApplicationController
       count = user.latest_album.images.length
       msg = %Q{收到 #{count} 张照片, 你可以继续上传, 或者<a href="http://#{WECHAT_CONFIG[:domain]}/albums/#{user.latest_album.id}/edit?openid=#{user.openid}">点击这里下一步制作</a>}
       request.reply.text msg
-    rescue => e
-      puts "处理上传图片失败, 媒体编号#{request[:MediaId]}"
-      puts e
-      request.reply.text "从微信服务器拉取图片失败, 图片编号[#{request[:MediaId]}]" #Just echo
+    rescue => error
+      logger.error "error:#{error.class}, #{error.message}"
+      logger.error "error:#{error.backtrace}"
+      request.reply.text "上传图片失败, 请稍后重试"
     end
   end
 
