@@ -16,7 +16,7 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 * export env
 * sudo service nginx restart
 * run redis
-* run sidekiq
+* RAILS_ENV=production QUEUES=default rake resque:work
 
 ### 微信接入
 
