@@ -17,6 +17,7 @@ gem 'devise'
 gem 'font-awesome-sass', '~> 4.3.0'
 gem 'sidekiq'
 gem 'resque'
+gem 'resque-scheduler'
 gem 'qiniu', '~> 6.5.0'
 
 group :development, :test do
