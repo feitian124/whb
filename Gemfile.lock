@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/feitian124/qiniu-ruby-sdk.git
-  revision: 94b7e62ed7ade512c46cb46f8164b77c2081a7ba
+  revision: 6a4f7a2841e3a45db820450b73a768d1ebb08aac
   branch: ming
   specs:
     qiniu (6.5.0)
