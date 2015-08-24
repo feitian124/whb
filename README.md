@@ -17,6 +17,7 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 * sudo service nginx restart
 * run redis
 * run sidekiq
+* QUEUES=default rake resque:work
 
 ### 微信接入
 
