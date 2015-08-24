@@ -17,7 +17,7 @@ gem 'devise'
 gem 'font-awesome-sass', '~> 4.3.0'
 gem 'resque'
 gem 'resque-scheduler'
-gem 'qiniu', '~> 6.5.0'
+gem 'qiniu', git:'https://github.com/feitian124/qiniu-ruby-sdk.git', branch: 'ming'
 
 group :development, :test do
   gem 'byebug'
