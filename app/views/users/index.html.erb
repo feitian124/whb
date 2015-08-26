@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>总粉丝数量: <%= @users.count %></h1>
+<h3>正在关注: <%= @users.count %>, 已取消: <%= @unsubscribed.count %></h3>
 
 <ul class="small-block-grid-3">
 <% @users.each do |user| %>

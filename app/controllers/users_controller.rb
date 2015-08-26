@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.where(subscribe: true)
+    @unsubscribed = User.all.where(subscribe: false)
   end
 
   # GET /users/1
