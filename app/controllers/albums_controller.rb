@@ -11,7 +11,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = @user.albums
+    @albums = @user.albums.order("id desc")
     render layout: "album"
   end
 

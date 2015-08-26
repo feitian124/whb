@@ -4,21 +4,14 @@
   <% @albums.each do |album| %>
     <li>
       <div class="time-circle">
-        <p class="album-date">07-23</p>
-        <p class="album-year">2015</p>
+        <p class="album-date"><%= album.created_at.strftime('%m-%d') %></p>
+        <p class="album-year"><%= album.created_at.year %></p>
       </div>
-
       <div class="right-content">
         <h6><%= album.name %></h6>
         <div class="photo-container">
           <img class="photo-cover" src="<%= album.images.first.url %>">
         </div>
-        <!--
-        <div class="album-desc">
-          相册浏览量:10次<br/>
-          转发:0次,分享:0次
-        </div>
-        -->
         <div class="album-manage">
           <%= link_to '查看', album_path(album), class: "edit-album button info tiny" %>
           <%= link_to '删除', album_path(album), class: "delete-album button info tiny", method: :delete, data: { confirm: "确定删除?" }%>
