@@ -255,15 +255,16 @@ $menus-z-index: 10;
   .right-content{
     margin: 0 20px 15px 20%;
     .photo-container {
-      margin: 5px 0 5px 0; 
-      position: relative; 
+      margin: 5px 0 5px 0;
+      position: relative;
       .photo-cover{
+        background-size: cover;
         width: 100%;
         height: 100px;
         border-radius: 10px;
         border: 3px solid black;
         box-shadow: 0 0 10px black;
-      }      
+      }
     }
     /*相片左边的小三角形 */
     .photo-container:after {
@@ -276,7 +277,7 @@ $menus-z-index: 10;
       pointer-events: none;
       border-right-color: black;
       border-width: 8px;
-      top: 35%;
+      top: 25%;
     }
     .album-desc{
       margin: 0 0 5px 0; 

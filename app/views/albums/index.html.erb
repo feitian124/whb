@@ -10,7 +10,8 @@
       <div class="right-content">
         <h6><%= album.name %></h6>
         <div class="photo-container">
-          <img class="photo-cover" src="<%= album.images.first.url %>">
+          <div class="photo-cover" style="background-image: url(<%= album.images.first.url %>)">
+          </div>
         </div>
         <div class="album-manage">
           <%= link_to '查看', album_path(album), class: "edit-album button info tiny" %>
