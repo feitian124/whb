@@ -17,4 +17,19 @@ class User < ActiveRecord::Base
       albums.create song: Song.second
     end
   end
+
+  def sex
+    case super
+    when 1
+      "男"
+    when 2
+      "女"
+    else
+      "性别未知"
+    end
+  end
+
+  def subscribe_time
+    Time.at(super).strftime('%Y-%m-%d %H:%M:%S')
+  end
 end

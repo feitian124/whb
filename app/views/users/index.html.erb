@@ -1,47 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>用户列表</h1> <%= link_to '创建新用户', new_user_path %>
+<h1>总粉丝数量: <%= @users.count %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="1">subscribe</th>
-      <th colspan="1">openid</th>
-      <th colspan="1">nickname</th>
-      <th colspan="1">sex</th>
-      <th colspan="1">language</th>
-      <th colspan="1">city</th>
-      <th colspan="1">province</th>
-      <th colspan="1">country</th>
-      <th colspan="1">headimgurl</th>
-      <th colspan="1">subscribe_time</th>
-      <th colspan="1">unionid</th>
-      <th colspan="1">remark</th>
-      <th colspan="4">actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.subscribe %></td>
-        <td><%= user.openid %></td>
-        <td><%= user.nickname %></td>
-        <td><%= user.sex %></td>
-        <td><%= user.language %></td>
-        <td><%= user.city %></td>
-        <td><%= user.province %></td>
-        <td><%= user.country %></td>
-        <td><%= image_tag user.headimgurl, size: "64x64" %></td>
-        <td><%= user.subscribe_time %></td>
-        <td><%= user.unionid %></td>
-        <td><%= user.remark %></td>
-
-        <td><%= link_to '详情', user %></td>
-        <td><%= link_to '编辑', edit_user_path(user) %></td>
-        <td><%= link_to '删除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to '相册', user_albums_path(user) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul class="small-block-grid-3">
+<% @users.each do |user| %>
+  <li>
+    <ul>
+      <li><b><%= user.nickname %></b></li>
+      <li><%= user.subscribe_time %></li>
+      <li><%= user.sex %>, 海报: <%= user.albums.count %></li>
+      <li><%= user.city %>, <%= user.province %></li>
+      <li>
+        <span><%= link_to '详情', user %></span>
+        <span><%= link_to '编辑', edit_user_path(user) %></span>
+        <span><%= link_to '删除', user, method: :delete, data: { confirm: '确定删除该用户?' } %></span>
+        <span><%= link_to '相册', user_albums_path(user) %></span>
+      </li>
+    </ul>
+  </li>
+<% end %>
+</ul>
