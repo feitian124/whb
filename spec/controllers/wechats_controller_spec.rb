@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe WechatsController, type: :controller do
-  include ActiveJob::TestHelper
-
   let(:user) { create(:user) }
   let(:valid_session) { {} }
   let(:signature_params) do
@@ -34,8 +32,6 @@ RSpec.describe WechatsController, type: :controller do
       image_message[:FromUserName] = user.openid
       post :create, {:xml => image_message}.merge(signature_params), valid_session
     }.to change(Image, :count).by(1)
-    # jobs + 1
-    expect(enqueued_jobs.size).to eq(1)
   end
 
   it "on subscribe" do

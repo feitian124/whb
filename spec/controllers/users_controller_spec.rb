@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   let(:user) { create(:user) }
   let(:valid_attributes) { attributes_for(:user) }
-  let(:invalid_attributes) { {openid: user.openid, nickname: nil} }
+  let(:invalid_attributes) { {openid: user.openid, nickname: nil, subscribe_time: 1} }
   let(:valid_session) { {} }
 
   before(:each) do
