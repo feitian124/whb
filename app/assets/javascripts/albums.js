@@ -52,16 +52,16 @@ $(function() {
   var showMusicCategory = function(category) {
       if ( category == 'english') {
         $('.music .music-category').addClass('hide');
-        $('.music .music-category-english').removeClass('hide');
+        $('.music-category.english').removeClass('hide');
       } else if(category == 'fashion') {
         $('.music .music-category').addClass('hide');
-        $('.music .music-category-fashion').removeClass('hide');
+        $('.music-category.fashion').removeClass('hide');
       } else if(category == 'pure') {
         $('.music .music-category').addClass('hide');
-        $('.music .music-category-pure').removeClass('hide');
+        $('.music-category.pure').removeClass('hide');
       } else {
         $('.music .music-category').addClass('hide');
-        $('.music .music-category-all').removeClass('hide');
+        $('.music-category.all').removeClass('hide');
       }
   }
 

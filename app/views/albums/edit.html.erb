@@ -49,7 +49,7 @@
           </li>
         </ul>
       </div>
-      <div class="music-category music-category-all ">
+      <div class="music-category all ">
         <% @songs.each_with_index do |song, i| %>
           <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
             <div class="small-12 columns">
@@ -60,9 +60,9 @@
           </div>
         <% end %>
       </div>
-      <div class="music-category music-category-fashion hide">
-        <% popular = @songs.find_all { |song| song.category == '流行' } %>
-        <% popular.each_with_index do |song, i| %>
+      <div class="music-category fashion hide">
+        <% fashion = @songs.find_all { |song| song.category == '流行' } %>
+        <% fashion.each_with_index do |song, i| %>
           <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
             <div class="small-12 columns">
               <%= "#{i} #{song.name} -- #{song.singer} " %>
@@ -72,7 +72,7 @@
           </div>
         <% end %>
       </div>
-      <div class="music-category music-category-english hide">
+      <div class="music-category english hide">
         <% english = @songs.find_all { |song| song.category == '英文' } %>
         <% english.each_with_index do |song, i| %>
           <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
@@ -84,7 +84,7 @@
           </div>
         <% end %>
       </div>
-      <div class="music-category music-category-pure hide">
+      <div class="music-category pure hide">
         <% pure = @songs.find_all { |song| song.category == '纯音乐' } %>
         <% pure.each_with_index do |song, i| %>
           <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
