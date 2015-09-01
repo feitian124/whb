@@ -49,23 +49,6 @@ $(function() {
     }
   }
 
-  var showMusicCategory = function(category) {
-      if ( category == 'english') {
-        $('.music .music-category').addClass('hide');
-        $('.music .music-category-english').removeClass('hide');
-      } else if(category == 'fashion') {
-        $('.music .music-category').addClass('hide');
-        $('.music .music-category-fashion').removeClass('hide');
-      } else if(category == 'pure') {
-        $('.music .music-category').addClass('hide');
-        $('.music .music-category-pure').removeClass('hide');
-      } else {
-        $('.music .music-category').addClass('hide');
-        $('.music .music-category-all').removeClass('hide');
-      }
-  }
-
-
   /**
    * 当有 row 参数时, 试听歌曲 row 行的歌曲
    * 当没有 row 参数时, 停止当前试听
@@ -112,24 +95,11 @@ $(function() {
       toggleMusic();
     });
 
-    $(".listWrapper .music .music-all").on('click', function(e){
-      e.stopPropagation();
-      showMusicCategory('all');
-    });
-
-    $(".listWrapper .music .music-english").on('click', function(e){
-      e.stopPropagation();
-      showMusicCategory('english');
-    });
-
-    $(".listWrapper .music .music-fashion").on('click', function(e){
-      e.stopPropagation();
-      showMusicCategory('fashion');
-    });
-
-    $(".listWrapper .music .music-pure").on('click', function(e){
-      e.stopPropagation();
-      showMusicCategory('pure');
+    // 显示不同类型的音乐
+    $(".listWrapper .music .music-tab ul li").on('click', function(e){
+      var category = $(this).attr('class');
+      $('.music .music-category').addClass('hide');
+      $('.music-category.' + category).removeClass('hide');
     });
 
     $(".listWrapper .music .row").on('click', function(e){

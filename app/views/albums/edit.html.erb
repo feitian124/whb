@@ -35,76 +35,65 @@
     <div class="music hide">
       <div class="music-tab">
         <ul class="li_style sub-nav">
-          <li class="music-all" class="active">
+          <li class="all" class="active">
             <a class="a-style" href="#">所有</a>
           </li>
-          <li class="music-fashion">
+          <li class="fashion">
             <a class="a-style" href="#">流行</a>
           </li>
-          <li class="music-english">
+          <li class="english">
             <a class="a-style" href="#">英文</a>
           </li>
-          <li class="music-pure">
+          <li class="pure">
             <a class="a-style" href="#">纯音乐</a>
           </li>
         </ul>
       </div>
-      <div class="music-category music-category-all ">
-        <% num = 0
-          @songs.each_with_index do |song, i|
-           num += 1 %>
+      <div class="music-category all ">
+        <% @songs.each_with_index do |song, i| %>
           <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
             <div class="small-12 columns">
-              <%= "#{num} #{song.name} -- #{song.singer} " %>
+              <%= "#{i} #{song.name} -- #{song.singer} " %>
               <div class="indicator"></div>
               <a href="#" class="button tiny pick">使用</a>
             </div>
           </div>
         <% end %>
       </div>
-      <div class="music-category music-category-fashion hide">
-      <% num = 0
-         @songs.each_with_index do |song, i|
-            if song.category == '流行'
-           num += 1 %>
-            <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
-              <div class="small-12 columns">
-                <%= "#{num} #{song.name} -- #{song.singer} " %>
-                <div class="indicator"></div>
-                <a href="#" class="button tiny pick">使用</a>
-              </div>
+      <div class="music-category fashion hide">
+        <% fashion = @songs.find_all { |song| song.category == '流行' } %>
+        <% fashion.each_with_index do |song, i| %>
+          <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
+            <div class="small-12 columns">
+              <%= "#{i} #{song.name} -- #{song.singer} " %>
+              <div class="indicator"></div>
+              <a href="#" class="button tiny pick">使用</a>
             </div>
-          <% end %>
+          </div>
         <% end %>
       </div>
-      <div class="music-category music-category-english hide">
-      <% num = 0
-         @songs.each_with_index do |song, i|
-           if song.category == '英文'
-           num += 1 %>
-            <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
-              <div class="small-12 columns">
-                <%= "#{num} #{song.name} -- #{song.singer} " %>
-                <div class="indicator"></div>
-                <a href="#" class="button tiny pick">使用</a>
-              </div>
+      <div class="music-category english hide">
+        <% english = @songs.find_all { |song| song.category == '英文' } %>
+        <% english.each_with_index do |song, i| %>
+          <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
+            <div class="small-12 columns">
+              <%= "#{i} #{song.name} -- #{song.singer} " %>
+              <div class="indicator"></div>
+              <a href="#" class="button tiny pick">使用</a>
             </div>
-          <% end %>
+          </div>
         <% end %>
       </div>
-      <div class="music-category music-category-pure hide">
-        <% num = 0
-         @songs.each_with_index do |song, i|
-           if song.category == '纯音乐'
-           num += 1 %>
-            <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
-              <div class="small-12 columns">
-                <%= "#{num} #{song.name}  #{song.singer} " %>
-                <div class="indicator"></div>
-                <a href="#" class="button tiny pick">使用</a>
-              </div>
+      <div class="music-category pure hide">
+        <% pure = @songs.find_all { |song| song.category == '纯音乐' } %>
+        <% pure.each_with_index do |song, i| %>
+          <div class="row" data-song-id="<%= song.id %>" data-song-src="<%= song.src %>">
+            <div class="small-12 columns">
+              <%= "#{i} #{song.name}  #{song.singer} " %>
+              <div class="indicator"></div>
+              <a href="#" class="button tiny pick">使用</a>
             </div>
-          <% end %>
+          </div>
         <% end %>
       </div>
     </div>
