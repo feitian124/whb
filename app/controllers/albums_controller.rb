@@ -73,7 +73,7 @@ class AlbumsController < ApplicationController
   def destroy
     @album.destroy
     respond_to do |format|
-      format.html { redirect_to user_albums_url(@album.user), notice: 'Album was successfully destroyed.' }
+      format.html { redirect_to user_albums_url(@album.user, params: {openid: @album.user.openid}), notice: '海报已经删除.' }
       format.json { head :no_content }
     end
   end
